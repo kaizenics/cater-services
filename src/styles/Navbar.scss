@@ -1,0 +1,62 @@
+$mainColor: #f52020dc;
+$secColor: #d43737;
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 1.2rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar img {
+    width: 50px;
+    height: 50px;
+}
+.navbar-nav {
+    display: flex;
+    margin-right: 8%;
+}
+
+.navbar-list {
+    list-style-type: none;
+    display: flex;
+    margin: 0 20px;
+}
+
+.navbar-item {
+    margin: 20px 20px;
+    padding: 0;
+}
+
+.navbar-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-item a:hover {
+    color: $mainColor;
+}
+
+.connect-btn {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: $mainColor;
+    opacity: 1;
+    border: 2px solid $secColor;
+    font-size: 18px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.connect-btn:hover {
+    background-color: transparent;
+}
+
+.btn {
+    color: #fff;
+    text-decoration: none;
+}
