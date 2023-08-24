@@ -1,0 +1,134 @@
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+}
+
+$mainColor: #f52020dc;
+$secColor: #d43737;
+
+.landing-body {
+    margin: 0;
+    padding: 0;
+}
+
+.image-sec {
+    position: relative;
+}
+
+.image-sec img {
+    display: block;
+    max-width: 100%;
+    height: 500px;
+}
+
+.image-sec h1 {
+    position: absolute;
+    text-align: center;
+    top: 20%;
+    width: 100%;
+    color: #fff;
+    font-size: 80px;
+    font-family: 'Lexend-Medium';
+}
+
+.image-sec span {
+    background: linear-gradient(349deg, rgba(162,37,37,1) 11%, rgba(208,57,77,1) 35%, rgba(228,63,88,1) 55%, rgba(214,60,80,1) 77%, rgba(172,62,62,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.img-btn {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.img-btn a {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px 45px;
+    background-color: transparent;
+    opacity: 1;
+    border: 2px solid $secColor;
+    font-size: 18px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.img-btn a:hover {
+    background-color: $mainColor;
+}
+
+.direct-btn {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Lexend-Medium';
+}
+
+.text-description {
+    justify-content: center;
+    align-content: center;
+}
+
+.text-description h1 {
+    font-size: 45px;
+    text-align: center;
+    margin: 50px 20%;
+    font-family: 'Questrial';
+}
+
+.text-description p {
+    font-size: 23px;
+    text-align: center;
+    margin: 10px 20%;
+    font-family: 'Questrial';
+}
+
+.desc-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desc-text {
+    text-decoration: none;
+    color: $mainColor;
+    text-transform: uppercase;
+    font-family: 'Lexend-Medium';
+}
+
+.desc-btn a {
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px 45px;
+    background-color: transparent;
+    opacity: 1;
+    border: 2px solid $secColor;
+    font-size: 18px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.desc-btn a:hover {
+    color: #fff;
+    background-color: $mainColor;
+}

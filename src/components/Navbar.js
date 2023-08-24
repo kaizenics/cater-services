@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../styles/Navbar.scss'
-import icon from '../images/restaurant.png'
+import icon from '../images/image.png'
 
 export default function Navbar() {
     return (
