@@ -3,9 +3,10 @@
 Front-end Interface Preview
 
 ### Landing
-![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/66a057b1-fafd-4d32-b92f-334795d8242f)
+![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/1ec8e0a8-d2bc-425e-9ce2-dd6695964c94)
 
-![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/da07bf4b-0d15-494e-82bf-2d1ef028fddf)
+![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/62542006-d18b-41e5-82a1-af04b2bf40b3)
+
 
 ## Tech Stack
 
