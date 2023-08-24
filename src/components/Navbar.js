@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../styles/Navbar.scss'
-import icon from '../images/image.png'
+import icon from '../images/ate-gangs.png'
 
 export default function Navbar() {
     return (
@@ -26,9 +26,9 @@ export default function Navbar() {
                         <Link to="/About">About</Link>
                     </li>
                 </ul>
-                    <button className="connect-btn">
+                    <div className="connect-btn">
                         <Link to="/Signup" className="btn">Get Started</Link>
-                        </button>
+                        </div>
                 </div>
             </nav>
         </>

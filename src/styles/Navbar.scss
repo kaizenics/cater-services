@@ -9,25 +9,24 @@
     src: url(../fonts/Lexend-Medium.ttf);
 }
 
-$mainColor: #f52020dc;
-$secColor: #d43737;
+$mainColor: #b9052a;
+$secColor: #89011c;
 
 .navbar {
-    background-color: #212530;
-    color: white;
+    background-color: #4f000f;
     padding: 0.5rem 0;
     display: flex;
     justify-content: space-between;
 }
 
 .image {
-    margin-top: 5px;
-    margin-left: 8%;
+    margin-top: 7px;
+    margin-left: 10%;
 }
 
 .navbar img {
-    width: 60px;
-    height: 60px;
+    width: auto;
+    height: 70px;
 }
 .navbar-nav {
     display: flex;
@@ -37,44 +36,55 @@ $secColor: #d43737;
 .navbar-list {
     list-style-type: none;
     display: flex;
-    margin: 0 20px;
+    margin: 5px 20px;
+    font-size: 17px;
 }
 
 .navbar-item {
-    margin: 24px 17px;
+    margin: 25px 20px;
     padding: 0;
 }
 
 .navbar-item a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
     font-family: 'Questrial';
 }
 
-.navbar-item a:hover {
-    color: $mainColor;
+.navbar-item a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: $mainColor;
+    transition: width 0.3s ease;
 }
 
-.connect-btn {
+.navbar-item a:hover::after{
+    width: 100%;
+}
+
+.connect-btn a{
     display: inline-block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px 20px;
-    background-color: $mainColor;
+    margin: 12px 0;
+    padding: 15px 20px;
+    background-color: #fff;
     opacity: 1;
-    border: 2px solid $secColor;
+    border: 2px solid #fff;
     font-size: 18px;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease; /* Added color transition */
     font-family: 'Lexend-Medium';
 }
 
-.connect-btn:hover {
+.connect-btn a:hover {
+    color: #fff;
     background-color: transparent;
 }
 
 .btn {
-    color: #fff;
+    color: #000;
     text-decoration: none;
+    text-transform: uppercase;
 }
