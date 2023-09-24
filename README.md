@@ -3,7 +3,10 @@
 Front-end Interface Preview
 
 ### Landing
-![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/d19c5619-f738-448c-8470-ee3c47052e9b)
+![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/1ec8e0a8-d2bc-425e-9ce2-dd6695964c94)
+
+![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/62542006-d18b-41e5-82a1-af04b2bf40b3)
+
 
 ## Tech Stack
 
@@ -23,4 +26,4 @@ Please refer to each project's style and contribution guidelines for submitting 
  4. **Push** your work back up to your fork
  5. Submit a **Pull request** so that we can review your changes
 
-NOTE: I have right to decline your Pull Requests if the styles, functionality, and codes does not fit to the existing program.
+NOTE: I have the rights to decline your Pull Requests if the styles, functionality, and codes does not fit to the existing program.
