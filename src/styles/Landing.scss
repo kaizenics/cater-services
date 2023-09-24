@@ -28,7 +28,7 @@ $secColor: #d43737;
 .image-sec img {
     display: block;
     max-width: 100%;
-    height: 500px;
+    height: 550px;
 }
 
 .image-sec-2 img {
@@ -48,7 +48,7 @@ $secColor: #d43737;
 }
 
 .image-sec span {
-    background: linear-gradient(349deg, rgba(162,37,37,1) 11%, rgba(208,57,77,1) 35%, rgba(228,63,88,1) 55%, rgba(214,60,80,1) 77%, rgba(172,62,62,1) 100%);
+    background: linear-gradient(349deg, rgba(162, 37, 37, 1) 11%, rgba(208, 57, 77, 1) 35%, rgba(228, 63, 88, 1) 55%, rgba(214, 60, 80, 1) 77%, rgba(172, 62, 62, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -145,9 +145,17 @@ $secColor: #d43737;
     background-color: $mainColor;
 }
 
-
 .container-3 {
-    background-color: #89011c;
+    position: relative;
+    background-color: hsla(348, 98%, 27%, 1);
+    background-image:
+        radial-gradient(at 50% 2%, hsla(18, 93%, 70%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(359, 100%, 59%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(15, 85%, 82%, 1) 0px, transparent 50%),
+        radial-gradient(at 49% 71%, hsla(359, 100%, 76%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(7, 100%, 68%, 1) 0px, transparent 50%),
+        radial-gradient(at 89% 90%, hsla(359, 100%, 70%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(359, 80%, 67%, 1) 0px, transparent 50%);
 }
 
 .mid-description {
@@ -173,7 +181,7 @@ $secColor: #d43737;
     flex-direction: column;
     color: #fff;
     max-width: 550px;
-    margin-left: 10px;
+    margin-left: 25px;
 }
 
 .text-content p {
@@ -183,7 +191,7 @@ $secColor: #d43737;
 }
 
 .img-container {
-    margin: 70px 30px 40px 15px; 
+    margin: 70px 30px 40px 15px;
 }
 
 .img-container img {
@@ -211,3 +219,57 @@ $secColor: #d43737;
 .text-btn:hover {
     background-color: #d8d8d8;
 }
+
+.down-description {
+    justify-content: center;
+    align-content: center;
+}
+
+.down-description h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 100px;
+    font-family: Questrial;
+}
+
+.down-description p {
+    font-size: 19px;
+    text-align: center;
+    margin: 10px 30%;
+    font-family: 'Questrial';
+}
+
+.down-description h1 span {
+    color: $mainColor;
+}
+
+.mid-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mid-text {
+    text-decoration: none;
+    color: $mainColor;
+    text-transform: uppercase;
+    font-family: 'Lexend-Medium';
+}
+
+.mid-btn a {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 20px 50px;
+    background-color: transparent;
+    opacity: 1;
+    border: 2px solid $secColor;
+    font-size: 20px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.mid-btn a:hover {
+    color: #fff;
+    background-color: $mainColor;
+}
+
