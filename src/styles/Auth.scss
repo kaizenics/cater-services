@@ -1,0 +1,146 @@
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+}
+
+@font-face {
+    font-family: Lexend-Bold;
+    src: url(../fonts/Lexend-Bold.ttf);
+}
+
+$mainColor: #f52020dc;
+
+/* LOGIN PAGE */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.box-container {
+   width: 25%;
+   height: 440px;
+   background-color: transparent;
+   border: 2px solid #c4c3c3dc;
+   border-radius: 35px;
+   box-shadow: 0px 0px 10px 4px #e4e4e4;
+   margin-top: 8%;
+   margin-bottom: 17%;
+}
+
+.login-box h3 {
+    font-size: 30px;
+    font-family: Lexend-Medium;
+    margin: 50px 40px 10px 40px;
+}
+
+.login-box h5 {
+    font-size: 17px;
+    text-align: center;
+    padding-top: 12px;
+    font-family: 'Questrial';
+    margin: 0;
+    color: #000;
+}
+
+.direct-auth {
+    font-size: 17px;
+    color: $mainColor;
+    text-decoration: none;
+}
+
+.login-box p {
+    font-size: 20px;
+    font-family: Questrial;
+    margin: 0px 0px 30px 40px;
+}
+
+.form-group {
+    position: relative;
+    margin: 10px 0px 0px 40px;
+}
+
+.form-group input {
+    width: 83%;
+    padding: 18px 20px;
+    border: 2px solid #c4c3c3dc;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #474747dc;
+    outline: none;
+    font-size: 16px;
+    z-index: 1; 
+}
+
+.form-group input:focus {
+    border-color: #000;
+}
+
+.form-group label {
+    position: absolute;
+    top: 18px; 
+    left: 20px;
+    color: #555555;
+    font-size: 16px;
+    pointer-events: none;
+    transition: top 0.2s, font-size 0.2s;
+    background-color: transparent; 
+    z-index: 2;
+    font-family: Questrial;
+}
+
+.form-group input::placeholder {
+    font-size: 14px;
+    color: transparent; 
+}
+
+.form-group input:focus + label, .form-group input:not(:placeholder-shown) + label {
+    top: -6px;
+    font-size: 13px;
+    color: #000;
+    background-color: #fff;
+    padding: 0 2px;
+    font-family: Questrial;
+}
+
+.login-btn {
+    background-color: $mainColor;
+    font-size: 18px;
+    font-family: 'Lexend-Medium';
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 85%;
+    padding: 18px 20px;
+    margin: 20px 0px 0px 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #af1919dc;
+}
+
+.login-btn.clicked {
+    background-color: gray;
+}
+
+/* SIGN UP */
+
+.box-container-1 {
+    width: 25%;
+    height: 500px;
+    background-color: transparent;
+    border: 2px solid #c4c3c3dc;
+    border-radius: 35px;
+    box-shadow: 0px 0px 10px 4px #e4e4e4;
+    margin-top: 8%;
+    margin-bottom: 17%;
+ }
+ 
