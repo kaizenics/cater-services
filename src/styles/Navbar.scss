@@ -13,7 +13,7 @@ $mainColor: #b9052a;
 $secColor: #89011c;
 
 .navbar {
-    background-color: #4f000f;
+    background-color: #860415;
     padding: 0.5rem 0;
     display: flex;
     justify-content: space-between;
@@ -58,7 +58,7 @@ $secColor: #89011c;
     display: block;
     width: 0;
     height: 2px;
-    background-color: $mainColor;
+    background-color: #fff;
     transition: width 0.3s ease;
 }
 
