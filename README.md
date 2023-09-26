@@ -7,6 +7,9 @@ Front-end Interface Preview
 
 ![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/62542006-d18b-41e5-82a1-af04b2bf40b3)
 
+![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/20dd98ff-fff9-4787-8b61-0dbb52bb537b)
+
+
 ### Login and Signup
 ![image](https://github.com/kaizenics/cater-services-web-app/assets/94561281/2bb0b27d-cb7f-4144-856c-85c0702810fd)
 
