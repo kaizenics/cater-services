@@ -1,0 +1,196 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Bold;
+  src: url(../fonts/Lexend-Bold.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.home-container-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-img img {
+  margin: 90px 40px 90px 0;
+  width: 1050px;
+  height: auto;
+}
+
+.home-search p {
+  color: #1b1b1b;
+  font-size: 43px;
+  font-family: Questrial;
+}
+
+.search-box {
+  width: 700px;
+  height: 70px;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+  padding: 7px 15px 7px 2px;
+}
+
+.search-input {
+  display: flex;
+  position: relative;
+  margin: 8px 0px 0px 10px;
+}
+
+.search-input input {
+  width: 83%;
+  padding: 10px 20px;
+  border: 2px solid #c4c3c3dc;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #474747dc;
+  outline: none;
+  font-size: 16px;
+  z-index: 1; 
+}
+
+.search-input input:focus {
+  border-color: #000;
+}
+
+.search-input label {
+  position: absolute;
+  top: 18px; 
+  left: 20px;
+  color: #555555;
+  font-size: 18px;
+  pointer-events: none;
+  transition: top 0.2s, font-size 0.2s;
+  background-color: transparent; 
+  z-index: 2;
+  font-family: Questrial;
+}
+
+.search-input input::placeholder {
+  font-size: 14px;
+  color: transparent; 
+}
+
+.search-input input:focus + label, .search-input input:not(:placeholder-shown) + label {
+  top: -6px;
+  font-size: 13px;
+  color: #000;
+  background-color: #fff;
+  padding: 0 2px;
+  font-family: Questrial;
+}
+
+.search-btn {
+  color: #fff;
+  margin-left: 10px;
+  padding: 13px 19px;
+  background-color: $mainColor;
+  opacity: 1;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #ff3d3d;
+}
+
+.expand-items {
+  text-align: center;
+}
+
+.expand-items p {
+  color: #353535;
+  margin: 70px 0 5px 0;
+  font-size: 30px;
+  font-family: Questrial;
+}
+
+.md-icon {
+  color: #3d3d3d;
+  width: 90px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dish-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dish-box {
+  width: 320px;
+  height: 320px;
+  background-color: #fff;
+  border: 2px solid #dfdededc;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+  padding-bottom: 130px;
+  margin: 100px 25px;
+  transition: transform 0.3s;
+}
+
+.dish-box:hover {
+  transform: sclae(1.05);
+}
+
+.dish-box p {
+  margin: 10px 0 0 20px;
+  font-family: Questrial;
+}
+
+.dish-img {
+  width: 270px;
+  height: auto;
+  margin: 30px;
+}
+
+.dish-desc {
+  display: flex;
+}
+
+.dish-desc h1 {
+  font-size: 25px;
+  margin: 0 0 0 20px;
+  font-family: Lexend-Medium;
+}
+
+.dish-desc p {
+  color: $mainColor;
+  font-size: 25px;
+  margin: 0 0 0 25px;
+  font-family: Lexend-Medium;
+}
+
+.dish-btn {
+  color: #fff;
+  margin: 25px 0 0 20px;
+  padding: 7px 13px;
+  background-color: $mainColor;
+  opacity: 1;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.dish-btn:hover {
+  background-color: #ff3d3d;
+}

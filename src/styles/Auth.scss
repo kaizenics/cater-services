@@ -25,7 +25,7 @@ $mainColor: #f52020dc;
 
 .box-container {
    width: 25%;
-   height: 440px;
+   height: 460px;
    background-color: transparent;
    border: 2px solid #c4c3c3dc;
    border-radius: 35px;
@@ -37,7 +37,7 @@ $mainColor: #f52020dc;
 .login-box h3 {
     font-size: 30px;
     font-family: Lexend-Medium;
-    margin: 50px 40px 10px 40px;
+    margin: 50px 20px 10px 30px;
 }
 
 .login-box h5 {
@@ -58,16 +58,16 @@ $mainColor: #f52020dc;
 .login-box p {
     font-size: 20px;
     font-family: Questrial;
-    margin: 0px 0px 30px 40px;
+    margin: 0px 0px 30px 30px;
 }
 
 .form-group {
     position: relative;
-    margin: 10px 0px 0px 40px;
+    margin: 10px 0px 0px 28px;
 }
 
 .form-group input {
-    width: 83%;
+    width: 82%;
     padding: 18px 20px;
     border: 2px solid #c4c3c3dc;
     border-radius: 10px;
@@ -84,7 +84,7 @@ $mainColor: #f52020dc;
 
 .form-group label {
     position: absolute;
-    top: 18px; 
+    top: 21px; 
     left: 20px;
     color: #555555;
     font-size: 16px;
@@ -116,9 +116,9 @@ $mainColor: #f52020dc;
     color: #fff;
     border: none;
     border-radius: 10px;
-    width: 85%;
-    padding: 18px 20px;
-    margin: 20px 0px 0px 40px;
+    width: 86%;
+    padding: 17px 18px;
+    margin: 20px 0px 0px 29px;
     cursor: pointer;
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
@@ -143,4 +143,16 @@ $mainColor: #f52020dc;
     margin-top: 8%;
     margin-bottom: 17%;
  }
- 
+
+/* PROCEEDING SIGN UP */
+
+.box-container-2 {
+    width: 25%;
+    height: 540px;
+    background-color: transparent;
+    border: 2px solid #c4c3c3dc;
+    border-radius: 35px;
+    box-shadow: 0px 0px 10px 4px #e4e4e4;
+    margin-top: 8%;
+    margin-bottom: 17%;
+ }

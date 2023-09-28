@@ -1,0 +1,102 @@
+
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.home-navbar {
+    background-color: #860415;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-image {
+    margin-top: 15px;
+    margin-left: 11%;
+}
+
+.home-navbar img {
+    width: auto;
+    height: 55px;
+}
+.home-navbar-nav {
+    display: flex;
+    margin-right: 8%;
+}
+
+.home-navbar-list {
+    list-style-type: none;
+    display: flex;
+    margin: 5px 20px;
+    font-size: 17px;
+}
+
+.home-navbar-item {
+    display: flex;
+    margin: 5px 10px;
+    
+    padding: 0;
+}
+
+.home-navbar-item h4 {
+    color: #fff;
+    margin: 24px 10px;
+    
+    font-family: Questrial;
+}
+
+.home-navbar-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    font-family: 'Questrial';
+}
+
+.home-connect-btn a {
+    display: inline-block;
+    margin: 12px 0;
+    padding: 15px 20px;
+    background-color: #fff;
+    opacity: 1;
+    border: 2px solid #fff;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease; /* Added color transition */
+    font-family: 'Lexend-Medium';
+}
+
+.home-connect-btn a:hover {
+    color: #fff;
+    background-color: transparent;
+}
+
+.home-btn {
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.fa-icon {
+    color: #fff;
+    width: 23px;
+    height: 23px;
+    margin: 20px 0;
+}
+
+
+.fa-icon-1 {
+    color: #fff;
+    width: 23px;
+    height: 23px;
+    margin: 30px 0;
+    cursor: pointer;
+}
+
