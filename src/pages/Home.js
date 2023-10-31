@@ -6,6 +6,7 @@ import dish from "../images/image-dish.png";
 import "../styles/Home.scss";
 
 export default function Home() {
+
   return (
     <>
       <HomeNav />

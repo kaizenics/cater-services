@@ -1,0 +1,81 @@
+
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.side-navbar {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    background-color: #292929;
+    border-right: 1px solid #494949;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .home-title {
+    display: flex;
+    padding: 20px 20px;
+    align-items: center;
+    background-color: #b9052a;
+  }
+  
+  .side-icon {
+    width: 180px;
+    height: 60px;
+    margin-left: 10px;
+  }
+  
+  .home-title p {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Lexend-Medium';
+    margin: 0;
+  }
+  
+  .home-title span {
+    font-family: 'Lexend-Medium';
+    color: #ffc918dc;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  .sidebar-menu a {
+    display: flex;
+    align-items: center;
+    color: #f0f0f0;
+    text-decoration: none;
+    font-family: 'Questrial';
+    padding: 20px 15px;
+    margin: 0;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sidebar-menu a:hover {
+    background-color: #504f4f;
+  }
+  
+  
+  .sidebar-icon {
+    font-size: 30px;
+    margin-right: 10px;
+  }
+  
+  

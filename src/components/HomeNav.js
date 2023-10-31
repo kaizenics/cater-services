@@ -3,7 +3,8 @@ import { FaRegUser, FaShoppingBag } from "react-icons/fa";
 import '../styles/HomeNav.scss'
 import icon from '../images/ate-gangs.png'
 
-export default function Navbar() {
+export default function HomeNavbar() {
+
     return (
         <>
             <nav className="home-navbar">
@@ -16,7 +17,7 @@ export default function Navbar() {
                 <div className="home-navbar-list">
                     <Link to="/Home" className="home-navbar-item">
                         <FaRegUser className="fa-icon"></FaRegUser>
-                        <h4>Nicose John</h4>
+                        <h4>{localStorage.getItem('firstname')}</h4>
                         </Link>
                 </div>
                  <Link to="/Login">

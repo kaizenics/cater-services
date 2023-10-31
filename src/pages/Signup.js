@@ -7,7 +7,11 @@ import "../styles/Footer.scss";
 
 export default function Signup() {
     const navigate = useNavigate();
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [address, setAddress] = useState();
     const [email, setEmail] = useState();
+    const [mobileNum, setMobileNum] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     const [error, setError] = useState();
@@ -16,6 +20,8 @@ export default function Signup() {
     async function SignUpHandler() {
       if (email === '' || password === ''|| confirmPassword === '') {
         alert('Please Input Email and Password to Proceed')
+      } else if (firstName === "" || lastName === "" || address === "" || mobileNum === "") {
+        alert("Please Fill the Blanks to Continue")
       } else if (password != confirmPassword) {
         alert("Password do not match")
       } else {
@@ -28,7 +34,11 @@ export default function Signup() {
           const url = "http://localhost/serverside/auth/AuthSignup.php";
           var data = {
             email: email,
-            password: password
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            address: address,
+            mobileNum: mobileNum,
           }
           console.log(data)
           const res = await fetch(url, {
@@ -39,8 +49,8 @@ export default function Signup() {
           .then(response => {
             console.log(response);
             if (response[0].Message === "Successfully Registered!") {
-              alert('Success! Fill the next form to Proceed');
-              navigate('/SignupForm');
+              alert('Success! Please Login again to proceed');
+              navigate('/Login');
             } else {
               setError(response[0].Message);
             }
@@ -65,6 +75,50 @@ export default function Signup() {
           <div className="login-box">
             <h3>We are happy to serve you!</h3>
             <p>Please Sign up to continue</p>
+            <div class="form-group">
+              <input 
+              type="text" 
+              autoComplete="off" 
+              id="email" 
+              placeholder="" 
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              />
+              <label for="firstName">First Name</label>
+            </div>
+            <div class="form-group">
+              <input 
+              type="text" 
+              autoComplete="off" 
+              id="email" 
+              placeholder="" 
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              />
+              <label for="lastName">Last Name</label>
+            </div>
+            <div class="form-group">
+              <input 
+              type="text" 
+              autoComplete="off" 
+              id="email" 
+              placeholder="" 
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              />
+              <label for="address">Address</label>
+            </div>
+            <div class="form-group">
+              <input 
+              type="text" 
+              autoComplete="off" 
+              id="email" 
+              placeholder="" 
+              value={mobileNum}
+              onChange={(e) => setMobileNum(e.target.value)}
+              />
+              <label for="mobileNum">Mobile Number</label>
+            </div>
             <div class="form-group">
               <input 
               type="text" 
