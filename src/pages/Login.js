@@ -6,6 +6,8 @@ import "../styles/Auth.scss";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -14,7 +16,16 @@ export default function Login() {
   async function LoginHandler() {
     if (email === '' || password === '') {
       setError('Please Input Email and Password to Proceed')
-    } else {
+      setEmailError(true)
+      setPasswordError(true)
+    } else if (email === '') {
+      setEmailError(true)
+      setPasswordError(false)
+    } else if (password === '') {
+      setPasswordError(true)
+      setEmailError(false)
+    }
+    else {
       try {
         var headers = {
           Accept: 'application/json',
@@ -35,9 +46,27 @@ export default function Login() {
          .then(response => {
           console.log(response);
           if (response.Message === 'Welcome!') {
-            alert("You have been Logged In!");
-            navigate('/Home');
+            window.localStorage.setItem('firstname', response.firstNameId)
+            window.localStorage.setItem('accountId', response.UserId)
+             
+             if (response.Role === 'admin') {
+               alert('Navigating to Admin Panel')
+               navigate('/AdminPanel')
+             } else {
+               alert("You have been Logged in!")
+               navigate('/Home')
+             }
+
+          } else if (response.Message === 'Incorrect Email') {
+            alert("Incorrect Email")
+            setEmailError(true)
+            setPasswordError(false)
+          } else if (response.Message === 'Incorrect Password') {
+            alert("Incorrect Password")
+            setEmailError(true)
+            setPasswordError(false)
           } else {
+            alert("Invalid or missing input data!")
             setError(response.Message);
           }
          }).catch(error => {
@@ -62,7 +91,7 @@ export default function Login() {
           <div className="login-box">
             <h3>Welcome!</h3>
             <p>Please Login to continue</p>
-            <div class="form-group">
+            <div className="form-group">
               <input 
               type="text" 
               autoComplete="off" 
@@ -73,7 +102,7 @@ export default function Login() {
               />
               <label for="email">Email</label>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <input
                 type="password"
                 autoComplete="off"
