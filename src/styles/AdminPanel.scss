@@ -1,3 +1,6 @@
+$mainColor: #b9052a;
+$secColor: #89011c;
+
 .dashboard-container {
     display: flex;
 }
@@ -6,3 +9,106 @@
     flex-direction: column;
     flex-grow: 1;
 }
+
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stats-box {
+    width: 480px;
+    height: 110px;
+    background-color: #fff;
+    border: 2px solid #dfdededc;
+    border-radius: 14px;
+    box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+    padding-bottom: 130px;
+    margin: 50px 25px;
+    transition: transform 0.3s;
+  }
+  
+  .stats-box:hover {
+    transform: sclae(1.05);
+  }
+  
+  .stats-box p {
+    margin: 10px 0 0 20px;
+    font-family: Questrial;
+  }
+  
+  .stats-desc {
+    display: flex;
+  }
+  
+  .stats-box h2 {
+    color: $mainColor;
+    font-size: 30px;
+    margin: 20px 0 0 20px;
+    font-family: Lexend-Medium;
+  }
+  
+  .stats-desc-1 {
+    display: flex;
+
+  }
+
+  .stats-desc-1 h1 {
+    font-size: 55px;
+    margin: 38px 0 0 0;
+  }
+
+  .stats-btn {
+    color: #fff;
+    margin: 25px 0 0 20px;
+    padding: 7px 13px;
+    background-color: $mainColor;
+    opacity: 1;
+    border: 2px solid $mainColor;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Lexend-Medium;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .dish-icon {
+    font-size: 100px;
+    margin: 25px 20px 10px 30px;
+  }
+
+  /* CRUD OPERATION */
+
+  .crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .crud-table th, .crud-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .crud-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .edit-btn, .delete-btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+  }
+  
+  .edit-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  }
+  
