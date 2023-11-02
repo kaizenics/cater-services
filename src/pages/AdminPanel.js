@@ -1,9 +1,19 @@
+import { useEffect, useState } from 'react'
 import AdminSidebar from "../components/AdminSidebar";
-import MenuItems from '../components/MenuItems';
+import MenuItems from "../components/MenuItems";
 import { BiDish, BiDollarCircle, BiUser } from "react-icons/bi";
 import "../styles/AdminPanel.scss";
 
 export default function Admin() {
+ const [menu, setMenu] = useState([]);
+
+ useEffect(() => {
+  fetch("http://localhost/serverside/items/getItem.php")
+      .then((response) => response.json())
+      .then((data) => setMenu(data))
+      .catch((error) => console.error("Error:", error));
+ }, [])
+
   return (
     <>
       <div className="dashboard-container">
@@ -36,20 +46,7 @@ export default function Admin() {
           </section>
 
           <section className="crud-dishes">
-          <div className="crud-opt">
-              <h2>Menu Items</h2>
-              <table className="crud-table">
-                <thead>
-                  <tr>
-                    <th>Item Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <MenuItems />
-              </table>
-            </div>
+            <MenuItems menu={menu}/>
           </section>
         </div>
       </div>
