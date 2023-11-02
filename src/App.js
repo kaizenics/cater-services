@@ -6,6 +6,8 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import AdminPanel from './pages/AdminPanel'
 import Settings from './pages/Settings'
+import AddItem from './pages/AddItem'
+import UpdateItem from './pages/UpdateItem'
 import './App.scss';
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
       <Route path="/About" element={<About/>}/>
       <Route path="/AdminPanel" element={<AdminPanel/>}/>
       <Route path="/Settings" element={<Settings/>}/>
+      <Route path="/AddItem" element={<AddItem/>}/>
+      <Route path="/UpdateItem" element={<UpdateItem/>}/>
     </Routes>
    </>
   );

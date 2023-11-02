@@ -77,4 +77,144 @@ $secColor: #89011c;
     margin: 25px 20px 10px 30px;
   }
 
+  /* CRUD OPERATION */
+
+.crud-opt {
+    margin: 0 60px;
+  }
+
+  .crud-opt h2 {
+    font-family: Lexend-Medium;
+  }
+  
+  .crud-text {
+    display: flex;
+  }
+
+  .crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .crud-table th, .crud-table td {
+    padding: 5px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    font-family: Questrial;
+  }
+  
+  .crud-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .edit-btn, .delete-btn {
+    padding: 10px 10px;
+    margin-right: 5px;
+  }
+
+
+  .edit-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    font-family: Lexend-Medium;
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    font-family: Lexend-Medium;
+    cursor: pointer;
+  }
+
+  .add-btn {
+    background-color: #0066ff;
+    padding: 15px -5px;
+    margin: 20px 15px;
+    color: white;
+    border: none;
+    font-family: Lexend-Medium;
+  }
+
+  .hiplus-icon {
+    font-size: 30px;
+  }
+
+  
+/* ADD ITEM STYLES */
+
+.add-item-box {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group-1 {
+    position: relative;
+    margin: 10px 0px 0px 0px;
+}
+
+.form-group-1 input {
+    width: 30%;
+    padding: 18px 20px;
+    border: 2px solid #c4c3c3dc;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #474747dc;
+    outline: none;
+    font-size: 16px;
+    z-index: 1; 
+}
+
+.form-group-1 input:focus {
+    border-color: #000;
+}
+
+.form-group-1 label {
+    position: absolute;
+    top: 21px; 
+    left: 20px;
+    color: #555555;
+    font-size: 16px;
+    pointer-events: none;
+    transition: top 0.2s, font-size 0.2s;
+    background-color: transparent; 
+    z-index: 2;
+    font-family: Questrial;
+}
+
+.form-group-1 input::placeholder {
+    font-size: 14px;
+    color: transparent; 
+}
+
+.form-group-1 input:focus + label, .form-group-1 input:not(:placeholder-shown) + label {
+    top: -6px;
+    font-size: 13px;
+    color: #000;
+    background-color: #fff;
+    padding: 0 2px;
+    font-family: Questrial;
+}
+
+  
+  .add-btn-sec {
+    padding: 10px 15px;
+    margin: 20px 0;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Questrial;
+  }
+  
+  .add-btn-sec:hover {
+    background-color: #0056b3;
+  }
   
