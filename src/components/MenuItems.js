@@ -4,6 +4,11 @@ import "../styles/AdminPanel.scss";
 
 export default function MenuItems({ menu }) {
   function deleteItem(itemId) {
+    const confirmation = window.confirm("Are you sure you want to delete this item?");
+    if (!confirmation) {
+      return;
+    }
+
     fetch(`http://localhost/serverside/items/deleteItem.php?id=${itemId}`)
       .then((response) => response.json())
       .then((data) => {

@@ -136,13 +136,13 @@ $secColor: #89011c;
 
 .dish-box {
   width: 320px;
-  height: 320px;
+  height: 350px;
   background-color: #fff;
   border: 2px solid #dfdededc;
   border-radius: 14px;
   box-shadow: 0px 0px 10px 6px #dfdfdfd3;
   padding-bottom: 130px;
-  margin: 100px 25px;
+  margin: 20px 25px;
   transition: transform 0.3s;
 }
 
@@ -157,7 +157,7 @@ $secColor: #89011c;
 
 .dish-img {
   width: 270px;
-  height: auto;
+  height: 240px;
   margin: 30px;
 }
 
@@ -193,4 +193,10 @@ $secColor: #89011c;
 
 .dish-btn:hover {
   background-color: #ff3d3d;
+}
+
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0 25px;
 }
