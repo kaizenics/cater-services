@@ -1,11 +1,20 @@
+import { useEffect, useState } from 'react';
 import { MdExpandMore } from "react-icons/md";
 import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
+import HomeItems from '../components/HomeItems';
 import image from "../images/header-dish.png";
-import dish from "../images/image-dish.png";
 import "../styles/Home.scss";
 
 export default function Home() {
+  const [dish, setDish] = useState([]);
+
+  useEffect(() => {
+   fetch("http://localhost/serverside/items/getItem.php")
+       .then((response) => response.json())
+       .then((data) => setDish(data))
+       .catch((error) => console.error("Error:", error));
+  }, [])
 
   return (
     <>
@@ -41,44 +50,7 @@ export default function Home() {
       </div>
 
       <section className="home-container-2">
-        <div className="dish-container">
-          <div className="dish-box">
-            <img src={dish} className="dish-img" />
-            <div className="dish-desc">
-              <h1>Filipino Sisig</h1>
-              <p>89 PHP</p>
-            </div>
-            <p>Filipino-Style Sisig Dish known for its savory and tangy flavors.</p>
-            <button className="dish-btn">Order now</button>
-          </div>
-          <div className="dish-box">
-            <img src={dish} className="dish-img" />
-            <div className="dish-desc">
-              <h1>Filipino Sisig</h1>
-              <p>89 PHP</p>
-            </div>
-            <p>Filipino-Style Sisig Dish known for its savory and tangy flavors.</p>
-            <button className="dish-btn">Order now</button>
-          </div>
-          <div className="dish-box">
-            <img src={dish} className="dish-img" />
-            <div className="dish-desc">
-              <h1>Filipino Sisig</h1>
-              <p>89 PHP</p>
-            </div>
-            <p>Filipino-Style Sisig Dish known for its savory and tangy flavors.</p>
-            <button className="dish-btn">Order now</button>
-          </div>
-          <div className="dish-box">
-            <img src={dish} className="dish-img" />
-            <div className="dish-desc">
-              <h1>Filipino Sisig</h1>
-              <p>89 PHP</p>
-            </div>
-            <p>Filipino-Style Sisig Dish known for its savory and tangy flavors.</p>
-            <button className="dish-btn">Order now</button>
-          </div>
-        </div>
+        <HomeItems dishes={dish}/>
       </section>
 
       <Footer />
