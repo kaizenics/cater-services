@@ -1,9 +1,9 @@
 import AdminSidebar from "../components/AdminSidebar";
 import "../styles/AdminPanel.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+const itemId = new URLSearchParams(window.location.search).get('id');
 
 export default function UpdateItem() {
-  const [imageFile, setImageFile] = useState(null);
   const [data, setData] = useState({
     id: "",
     itemName: "",
@@ -12,50 +12,63 @@ export default function UpdateItem() {
     qty: "",
   });
 
-  async function updateItemDataHandler(data) {
-    if (
-      data.itemName === "" ||
-      data.price === "" ||
-      data.description === "" ||
-      data.qty === "" ||
-      !imageFile
-    ) {
-      alert("Please fill in all fields and upload an image");
+  useEffect(() => {
+    if (itemId) {
+      fetch(`http://localhost/serverside/items/getItem.php?id=${itemId}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            const itemData = data[0];
+            setData({
+              id: itemData.item_id,
+              itemName: itemData.itemName,
+              price: itemData.price,
+              description: itemData.description,
+              qty: itemData.qty,
+            });
+          }
+        })
+        .catch(error => console.log(error));
+    }
+  }, [itemId]);
+
+  async function updateItemDataHandler() {
+    console.log(JSON.stringify(data));
+
+    if (data.itemName === '' || data.price === '' || data.description === '' || data.qty === '') {
+      alert('Please fill in all fields');
       return;
     }
 
     try {
-      const formData = new FormData();
-      formData.append("id", data.id);
-      formData.append("itemName", data.itemName);
-      formData.append("price", data.price);
-      formData.append("description", data.description);
-      formData.append("qty", data.qty);
-      formData.append("image", imageFile);
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
 
-      const res = await fetch(
-        `http://localhost/serverside/items/updateItem.php?id=${data.id}`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const url = `http://localhost/serverside/items/updateItem.php?id=${data.id}`;
 
-      const response = await res.json();
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: headers,
+        body: JSON.stringify(data),
+      });
 
-      if (response[0].Message) {
-        alert(response[0].Message);
+      const responseData = await response.json();
+      console.log(responseData);
+
+      if (response.ok) {
+    
+        alert(responseData[0].Message);
+      } else {
+        alert("Failed to update item information");
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      alert("An error occurred while updating item information");
     }
   }
-
-  function handleImageUpload(event) {
-    const file = event.target.files[0];
-    setImageFile(file);
-  }
-
+  
   return (
     <>
       <div className="dashboard-container">
@@ -70,8 +83,9 @@ export default function UpdateItem() {
                   autoComplete="off"
                   id="itemName"
                   placeholder=""
+                  value={data.itemName}
                   onChange={(e) => {
-                    setData({ ...data, itemName: e.target.value });
+                    setData((prevData) => ({ ...prevData, itemName: e.target.value }));
                   }}
                 />
                 <label for="email">Item Name</label>
@@ -82,8 +96,9 @@ export default function UpdateItem() {
                   autoComplete="off"
                   id="price"
                   placeholder=""
+                  value={data.price}
                   onChange={(e) => {
-                    setData({ ...data, price: e.target.value });
+                    setData((prevData) => ({ ...prevData, price: e.target.value }));
                   }}
                 />
                 <label for="email">Price</label>
@@ -94,8 +109,9 @@ export default function UpdateItem() {
                   autoComplete="off"
                   id="description"
                   placeholder=""
+                  value={data.description}
                   onChange={(e) => {
-                    setData({ ...data, description: e.target.value });
+                    setData((prevData) => ({ ...prevData, description: e.target.value }));
                   }}
                 />
                 <label for="email">Description</label>
@@ -106,27 +122,18 @@ export default function UpdateItem() {
                   autoComplete="off"
                   id="quantity"
                   placeholder=""
+                  value={data.qty}
                   onChange={(e) => {
-                    setData({ ...data, qty: e.target.value });
+                    setData((prevData) => ({ ...prevData, qty: e.target.value }));
                   }}
                 />
                 <label for="email">Quantity</label>
               </div>
-              <div className="form-group-1">
-                <input
-                  type="file"
-                  id="image"
-                  placeholder=""
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                />
-                <label htmlFor="image">Upload Image:</label>
-              </div>
               <button
                 className="add-btn-sec"
-                onClick={() => updateItemDataHandler(data)}
+                onClick={() => updateItemDataHandler()}
               >
-                Add Item
+                Update Item
               </button>
             </div>
           </section>
