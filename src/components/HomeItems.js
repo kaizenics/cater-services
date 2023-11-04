@@ -1,7 +1,14 @@
-import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import "../styles/Home.scss";
 
 export default function HomeItems({ dishes }) {
+  const [selectedDish, setSelectedDish] = useState(null);
+
+  const handleOrderClick = (desh) => {
+    setSelectedDish({ dishInfo: desh });
+  };
+
   return (
     <section className="dish-grid">
       {dishes.map((desh, key) => (
@@ -13,7 +20,14 @@ export default function HomeItems({ dishes }) {
               <p>{desh.price} PHP</p>
             </div>
             <p>{desh.description}</p>
-            <button className="dish-btn">Order now</button>
+            <Link
+              to={{
+                pathname: "/DishOrder",
+                state: { dishInfo: desh }
+              }}
+            >
+              <button className="dish-btn" onClick={() => handleOrderClick(desh)}>Order now</button>
+            </Link>
           </div>
         </div>
       ))}
