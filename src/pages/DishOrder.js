@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 
 export default function DishOrder(props) {
   const location = useLocation();
+  const dishInfo = location.state?.dishInfo;
   const [quantity, setQuantity] = useState(1);
   const [dishes, setDishes] = useState([]);
   const [selectedDish, setSelectedDish] = useState(null);
