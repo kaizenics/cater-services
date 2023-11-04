@@ -1,0 +1,219 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Bold;
+  src: url(../fonts/Lexend-Bold.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.dish-order-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px 100px 0 100px;
+}
+
+.dish-info {
+  display: flex;
+}
+
+.dish-info-child h1 {
+  font-size: 55px;
+  font-family: Lexend-Medium;
+  margin-bottom: 0;
+}
+.dish-info-child h2 {
+  font-size: 30px;
+  font-family: Questrial;
+}
+
+.dish-info-child p {
+  font-size: 45px;
+  font-family: Lexend-Medium;
+  color: $mainColor;
+}
+
+.dish-info-child p span {
+  font-size: 45px;
+  font-family: Lexend-Medium;
+  color: #000;
+}
+
+.dish-info-child h3 {
+    font-size: 20px;
+    font-family: Questrial;
+}
+
+.dish-icon-1 {
+  width: 500px;
+  height: 500px;
+  margin-right: 10px;
+}
+
+.dish-item-box {
+  width: 420px;
+  height: 350px;
+  background-color: #fff;
+  border: 2px solid #dfdededc;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+  padding-bottom: 130px;
+  margin: 20px 25px;
+  transition: transform 0.3s;
+}
+
+.dish-btn-1 {
+  color: $mainColor;
+  margin-top: 50px;
+  margin-right: 10px;
+  padding: 10px 15px;
+  background-color: transparent;
+  opacity: 1;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.dish-btn-1:hover {
+  color: #fff;
+  background-color: $mainColor;
+}
+
+.dish-buttons {
+    display: flex;
+}
+
+.form-group-2 {
+    position: relative;
+    margin: 15px 0px 0px 28px;
+}
+
+.form-group-2 input {
+    width: 82%;
+    padding: 18px 20px;
+    border: 2px solid #c4c3c3dc;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #474747dc;
+    outline: none;
+    font-size: 16px;
+    z-index: 1; 
+}
+
+.form-group-2 input:focus {
+    border-color: #000;
+}
+
+.form-group-2 label {
+    position: absolute;
+    top: 21px; 
+    left: 20px;
+    color: #555555;
+    font-size: 16px;
+    pointer-events: none;
+    transition: top 0.2s, font-size 0.2s;
+    background-color: transparent; 
+    z-index: 2;
+    font-family: Questrial;
+}
+
+.form-group-2 input::placeholder {
+    font-size: 14px;
+    color: transparent; 
+}
+
+.form-group-2 input:focus + label, .form-group-2 input:not(:placeholder-shown) + label {
+    top: -6px;
+    font-size: 13px;
+    color: #000;
+    background-color: #fff;
+    padding: 0 2px;
+    font-family: Questrial;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .quantity-adding {
+    border: 1px solid #89011c;
+  }
+
+  .quantity-btn-left {
+    font-size: 1.5em;
+    padding: 0.3em 0.8em;
+    background-color: $mainColor;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-right: 1px solid #89011c;
+    transition: background-color 0.3s;
+  }
+
+  .quantity-btn-right {
+    font-size: 1.5em;
+    padding: 0.3em 0.8em;
+    background-color: $mainColor;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-left: 1px solid #89011c;
+    transition: background-color 0.3s;
+  }
+  
+  .quantity-btn-left:hover, .quantity-btn-right:hover {
+    background-color: $secColor;
+  }
+  
+  .quantity-input {
+    font-size: 1.5em;
+    width: 30px;
+    text-align: center;
+    border: none;
+    margin: 0 0.5em;
+    padding: 0.2em 0.5em;
+    font-family: Lexend-Medium;
+  }
+  
+  .quantity-input::-webkit-inner-spin-button,
+  .quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .quantity-input:focus {
+    outline: none;
+  }
+
+  .expand-items-1 {
+    text-align: center;
+  }
+
+  .expand-items-1 p {
+    color: #353535;
+    margin: 120px 0 5px 0;
+    font-size: 30px;
+    font-family: Questrial;
+  }
+  
+  .md-icon-1 {
+    color: #3d3d3d;
+    width: 90px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  

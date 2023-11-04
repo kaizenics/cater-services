@@ -170,38 +170,16 @@ $secColor: #89011c;
     z-index: 1; 
 }
 
+.form-group-1 input::placeholder {
+  font-size: 15px;
+  color: #000;
+  font-family: Questrial;
+}
+
 .form-group-1 input:focus {
     border-color: #000;
 }
 
-.form-group-1 label {
-    position: absolute;
-    top: 21px; 
-    left: 20px;
-    color: #555555;
-    font-size: 16px;
-    pointer-events: none;
-    transition: top 0.2s, font-size 0.2s;
-    background-color: transparent; 
-    z-index: 2;
-    font-family: Questrial;
-}
-
-.form-group-1 input::placeholder {
-    font-size: 14px;
-    color: transparent; 
-}
-
-.form-group-1 input:focus + label, .form-group-1 input:not(:placeholder-shown) + label {
-    top: -6px;
-    font-size: 13px;
-    color: #000;
-    background-color: #fff;
-    padding: 0 2px;
-    font-family: Questrial;
-}
-
-  
   .add-btn-sec {
     padding: 10px 15px;
     margin: 20px 0;

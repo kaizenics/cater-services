@@ -1,9 +1,9 @@
 import AdminSidebar from "../components/AdminSidebar";
 import "../styles/AdminPanel.scss";
 import { useState, useEffect } from "react";
-const itemId = new URLSearchParams(window.location.search).get('id');
 
 export default function UpdateItem() {
+  const itemId = new URLSearchParams(window.location.search).get('id');
   const [data, setData] = useState({
     id: "",
     itemName: "",
@@ -82,52 +82,48 @@ export default function UpdateItem() {
                   type="text"
                   autoComplete="off"
                   id="itemName"
-                  placeholder=""
+                  placeholder="Item Name"
                   value={data.itemName}
                   onChange={(e) => {
                     setData((prevData) => ({ ...prevData, itemName: e.target.value }));
                   }}
                 />
-                <label for="email">Item Name</label>
               </div>
               <div className="form-group-1">
                 <input
                   type="text"
                   autoComplete="off"
                   id="price"
-                  placeholder=""
+                  placeholder="Price"
                   value={data.price}
                   onChange={(e) => {
                     setData((prevData) => ({ ...prevData, price: e.target.value }));
                   }}
                 />
-                <label for="email">Price</label>
               </div>
               <div className="form-group-1">
                 <input
                   type="text"
                   autoComplete="off"
                   id="description"
-                  placeholder=""
+                  placeholder="Description"
                   value={data.description}
                   onChange={(e) => {
                     setData((prevData) => ({ ...prevData, description: e.target.value }));
                   }}
                 />
-                <label for="email">Description</label>
               </div>
               <div className="form-group-1">
                 <input
                   type="text"
                   autoComplete="off"
                   id="quantity"
-                  placeholder=""
+                  placeholder="Quantity"
                   value={data.qty}
                   onChange={(e) => {
                     setData((prevData) => ({ ...prevData, qty: e.target.value }));
                   }}
                 />
-                <label for="email">Quantity</label>
               </div>
               <button
                 className="add-btn-sec"

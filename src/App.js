@@ -8,6 +8,7 @@ import AdminPanel from './pages/AdminPanel'
 import Settings from './pages/Settings'
 import AddItem from './pages/AddItem'
 import UpdateItem from './pages/UpdateItem'
+import DishOrder from './pages/DishOrder'
 import './App.scss';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path="/Settings" element={<Settings/>}/>
       <Route path="/AddItem" element={<AddItem/>}/>
       <Route path="/UpdateItem" element={<UpdateItem/>}/>
+      <Route path="/DishOrder" element={<DishOrder/>}/>
     </Routes>
    </>
   );

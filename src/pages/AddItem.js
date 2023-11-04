@@ -58,48 +58,44 @@ export default function AddItem() {
                   type="text"
                   autoComplete="off"
                   id="itemName"
-                  placeholder=""
+                  placeholder="Item Name"
                   onChange={(e) => {
                     setData({ ...data, itemName: e.target.value });
                   }}
                 />
-                <label for="email">Item Name</label>
               </div>
               <div className="form-group-1">
                 <input
                   type="text"
                   autoComplete="off"
                   id="price"
-                  placeholder=""
+                  placeholder="Price"
                   onChange={(e) => {
                     setData({ ...data, price: e.target.value });
                   }}
                 />
-                <label for="email">Price</label>
               </div>
               <div className="form-group-1">
                 <input
                   type="text"
                   autoComplete="off"
                   id="description"
-                  placeholder=""
+                  placeholder="Description"
                   onChange={(e) => {
                     setData({ ...data, description: e.target.value });
                   }}
                 />
-                <label for="email">Description</label>
               </div>
               <div className="form-group-1">
                 <input
                   type="text"
                   autoComplete="off"
                   id="quantity"
-                  placeholder=""
+                  placeholder="Quantity"
                   onChange={(e) => {
                     setData({ ...data, qty: e.target.value });
                   }}
                 />
-                <label for="email">Quantity</label>
               </div>
               <div className="form-group-1">
                 <input
@@ -109,7 +105,6 @@ export default function AddItem() {
                   accept="image/*"
                   onChange={handleImageUpload}
                 />
-                <label htmlFor="image">Upload Image:</label>
               </div>
               <button
                 className="add-btn-sec"
