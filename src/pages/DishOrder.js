@@ -1,7 +1,6 @@
 import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
 import "../styles/DishOrder.scss";
-import icon from "../images/image-dish.png";
 import { Link, useLocation } from "react-router-dom";
 import { MdExpandMore } from "react-icons/md";
 import { useState, useEffect } from "react";
