@@ -3,11 +3,6 @@ import { useState } from 'react';
 import "../styles/Home.scss";
 
 export default function HomeItems({ dishes }) {
-  const [selectedDish, setSelectedDish] = useState(null);
-
-  const handleOrderClick = (desh) => {
-    setSelectedDish({ dishInfo: desh });
-  };
 
   return (
     <section className="dish-grid">
@@ -26,7 +21,7 @@ export default function HomeItems({ dishes }) {
                 state: { dishInfo: desh }
               }}
             >
-              <button className="dish-btn" onClick={() => handleOrderClick(desh)}>Order now</button>
+              <button className="dish-btn">Order now</button>
             </Link>
           </div>
         </div>

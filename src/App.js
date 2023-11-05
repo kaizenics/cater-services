@@ -24,7 +24,7 @@ function App() {
       <Route path="/Settings" element={<Settings/>}/>
       <Route path="/AddItem" element={<AddItem/>}/>
       <Route path="/UpdateItem" element={<UpdateItem/>}/>
-      <Route path="/DishOrder" element={<DishOrder/>}/>
+      <Route path="/DishOrder/:dishId" element={<DishOrder/>}/>
     </Routes>
    </>
   );
