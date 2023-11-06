@@ -1,16 +1,15 @@
 import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
 import "../styles/DishOrder.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdExpandMore } from "react-icons/md";
 import { useState, useEffect } from "react";
 
-export default function DishOrder(props) {
-  const location = useLocation();
-  const dishInfo = location.state?.dishInfo;
+export default function DishOrder() {
   const [quantity, setQuantity] = useState(1);
   const [dishes, setDishes] = useState([]);
   const [selectedDish, setSelectedDish] = useState(null);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost/serverside/items/getItem.php")
@@ -20,10 +19,32 @@ export default function DishOrder(props) {
   }, []);
 
   useEffect(() => {
-    if (location.state && location.state.dishInfo) {
-      setSelectedDish(location.state.dishInfo);
-    }
-  }, [location.state]);
+    const storedDish = JSON.parse(localStorage.getItem('selectedDish'));
+    setSelectedDish(storedDish);
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItemCount(storedCartItems.length);
+  }, []);
+
+  if (!selectedDish) {
+    return <div>Loading...</div>;
+  }
+
+  function handleAddToCartClick() {
+    const cartItem = {
+      imageUrl: selectedDish.imageUrl,
+      itemName: selectedDish.itemName,
+      description: selectedDish.description,
+      price: selectedDish.price,
+      quantity: quantity,
+    };
+
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push(cartItem);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    setCartItemCount((prevCount) => prevCount + 1);
+
+    alert('Item added to cart!');
+  }
 
   function shuffleArray(array) {
     const shuffledArray = [...array];
@@ -35,6 +56,16 @@ export default function DishOrder(props) {
       ];
     }
     return shuffledArray;
+  }
+
+  function handleOrderClick(dish) {
+    window.location.href = '/DishOrder';
+    const selectedDish = {
+      ...dish,
+      imageUrl: `http://localhost/serverside/items/${dish.imageUrl}` 
+    };
+    localStorage.setItem('selectedDish', JSON.stringify(selectedDish));
+    setSelectedDish(selectedDish);
   }
 
   const handleIncrease = () => {
@@ -54,20 +85,16 @@ export default function DishOrder(props) {
         <div className="dish-order-container">
           <div className="dish-info">
             <img
-              src={`http://localhost/serverside/items/${selectedDish ? selectedDish.imageUrl : null}`}
+              src={selectedDish.imageUrl}
               className="dish-icon-1"
               alt=""
             />
             <div className="dish-info-child">
-              <h1>{selectedDish ? selectedDish.itemName : "Super Sisig"}</h1>
-              <h2>
-                {selectedDish
-                  ? selectedDish.description
-                  : "Filipino made style sisig dish"}
-              </h2>
+              <h1>{selectedDish.itemName}</h1>
+              <h2>{selectedDish.description}</h2>
               <p>
                 <span>Price: </span>
-                {selectedDish ? selectedDish.price : "89"} PHP
+                ₱ {selectedDish.price}
               </p>
               <h3>Quantity:</h3>
               <div className="quantity-control">
@@ -93,10 +120,8 @@ export default function DishOrder(props) {
                 </div>
               </div>
               <div className="dish-buttons">
-                <Link to="/Home">
-                  <button className="dish-btn-1">Add to Cart</button>
-                </Link>
-                <Link to="/Home">
+                  <button className="dish-btn-1" onClick={handleAddToCartClick}>Add to Cart</button>
+                <Link to="/Cart">
                   <button className="dish-btn-1">Buy Now</button>
                 </Link>
               </div>
@@ -111,7 +136,7 @@ export default function DishOrder(props) {
       </div>
 
       <section className="dish-grid">
-        {dishes.map((desh, key) => (
+        {dishes.slice(0, 5).map((desh, key) => (
           <div key={key} className="dish-container">
             <div className="dish-box">
               <img
@@ -121,14 +146,13 @@ export default function DishOrder(props) {
               />
               <div className="dish-desc">
                 <h1>{desh.itemName}</h1>
-                <p>{desh.price} PHP</p>
+                <p>₱ {desh.price}</p>
               </div>
               <p>{desh.description}</p>
               <Link to="/DishOrder">
                 <button
                   className="dish-btn"
-                  onClick={() => setSelectedDish(desh)}
-                  
+                  onClick={() => handleOrderClick(desh)}
                 >
                   Order now
                 </button>

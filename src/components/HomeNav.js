@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { FaRegUser, FaShoppingBag } from "react-icons/fa";
 import "../styles/HomeNav.scss";
@@ -6,6 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomeNavbar() {
   const navigate = useNavigate();
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItemCount(storedCartItems.length);
+  }, []);
+
   const toggleDropdown = () => {
     const dropdown = document.querySelector(".dropdown-content");
     dropdown.classList.toggle("show");
@@ -44,10 +52,12 @@ export default function HomeNavbar() {
               </div>
             </div>
           </div>
-          <Link to="/Login">
+          
+          <Link to="/Cart" className="home-nav-button">
             <FaShoppingBag className="fa-icon-1" />
+            {cartItemCount > 0 && <span className="cart-item-count">{cartItemCount} Items</span>}
           </Link>
-        </div>
+          </div>
       </nav>
     </>
   );
