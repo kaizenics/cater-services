@@ -60,7 +60,6 @@ export default function MenuItems({ menu }) {
             </tbody>
           ))}
         </table>
-        <button className="next-list-item">Next</button>
       </div>
     </>
   );

@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import "../styles/Home.scss";
 
 export default function HomeItems({ dishes }) {
+
+  function handleOrderClick(dish) {
+    const selectedDish = {
+      ...dish,
+      imageUrl: `http://localhost/serverside/items/${dish.imageUrl}` 
+    }
+    localStorage.setItem('selectedDish', JSON.stringify(selectedDish));
+  }
 
   return (
     <section className="dish-grid">
@@ -12,16 +19,11 @@ export default function HomeItems({ dishes }) {
             <img src={`http://localhost/serverside/items/${desh.imageUrl}`} className="dish-img" alt={desh.itemName}/>
             <div className="dish-desc">
               <h1>{desh.itemName}</h1>
-              <p>{desh.price} PHP</p>
+              <p>₱ {desh.price}</p>
             </div>
             <p>{desh.description}</p>
-            <Link
-              to={{
-                pathname: "/DishOrder",
-                state: { dishInfo: desh }
-              }}
-            >
-              <button className="dish-btn">Order now</button>
+            <Link to="/DishOrder">
+              <button className="dish-btn" onClick={() => handleOrderClick(desh)}>Order now</button>
             </Link>
           </div>
         </div>

@@ -34,6 +34,7 @@ export default function AddItem() {
   
         if (response[0].Message) {
           alert(response[0].Message);
+
         }
       } catch (error) {
         console.error(error);

@@ -57,7 +57,7 @@ export default function Footer() {
                 </div>
          </section>
          <div className="down-text">
-                <p>Haerus Collective © 2023</p>
+                <p>Heraeus Interactive © 2023</p>
                 </div>
         </>
     )

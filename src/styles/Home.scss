@@ -147,7 +147,7 @@ $secColor: #89011c;
 }
 
 .dish-box:hover {
-  transform: sclae(1.05);
+  transform: scale(1.05);
 }
 
 .dish-box p {
@@ -163,6 +163,7 @@ $secColor: #89011c;
 
 .dish-desc {
   display: flex;
+  justify-content: space-between;
 }
 
 .dish-desc h1 {
@@ -174,7 +175,7 @@ $secColor: #89011c;
 .dish-desc p {
   color: $mainColor;
   font-size: 25px;
-  margin: 0 0 0 25px;
+  margin: 0px 20px 0px 0px;
   font-family: Lexend-Medium;
 }
 
