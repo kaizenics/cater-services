@@ -1,0 +1,138 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.cart-container h1 {
+  font-size: 40px;
+  margin: 30px 30px 15px 80px;
+  font-family: Lexend-Medium;
+}
+
+.cart-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-info {
+  display: flex;
+}
+
+.cart-box {
+  width: 850px;
+  height: 75px;
+  background-color: #fff;
+  border: 2px solid #dfdededc;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+  padding-bottom: 130px;
+  margin: 20px 25px;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.cart-box-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .cart-box {
+    width: calc(45% - 50px); 
+  }
+  
+  .cart-box.even {
+    margin-right: 20px;  
+  }
+  
+  .cart-box.odd {
+    margin-left: 20px;
+  }
+  
+
+.cart-img {
+  width: 190px;
+  height: 140px;
+  margin: 30px 15px 30px 30px;
+}
+
+.cart-desc h1 {
+  font-size: 25px;
+  font-family: Lexend-Medium;
+  margin: 30px 0px 0px 0px;
+}
+
+.cart-desc h2 {
+  font-size: 18px;
+  font-family: Questrial;
+}
+
+.cart-desc h3 {
+  font-size: 20px;
+  font-family: Lexend-Medium;
+  color: $mainColor;
+  margin: 15px 0px 0px 0px;
+}
+
+.cart-desc h4 {
+  font-size: 17px;
+  font-family: Questrial;
+  margin: 0;
+}
+
+.cart-children {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-buttons {
+  margin-right: 35px;
+}
+
+.cart-buy {
+  display: block;
+  color: $mainColor;
+  margin-top: 50px;
+  padding: 10px 57px;
+  background-color: transparent;
+  opacity: 1;
+  text-align: center;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.cart-delete {
+  display: block;
+  color: #fff;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: $mainColor;
+  opacity: 1;
+  text-align: center;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.cart-buy:hover {
+  color: #fff;
+  background-color: $mainColor;
+}
+
+.cart-delete:hover {
+  color: $mainColor;
+  background-color: transparent;
+}
