@@ -1,0 +1,83 @@
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+}
+
+@font-face {
+    font-family: Lexend-Bold;
+    src: url(../fonts/Lexend-Bold.ttf);
+}
+.text-contentH {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    margin-left: 50px;
+}
+
+.img-container {
+    margin: 70px 30px 40px 15px;
+}
+
+.mid-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desc-1 {
+    display: flex;
+    align-items: center;
+}
+
+.text-content-about h1 {
+    margin: 10;
+    font-size: 50px;
+    color: rgb(136, 1, 28);
+    font-family: Lexend-Bold;
+}
+
+.text-content-about {
+    display: flex;
+    flex-direction: column;
+    color: rgb(136, 1, 28);
+    max-width: 550px;
+    margin-left: 25px;
+}
+
+.text-content1-about h1 {
+    margin: 40;
+    font-size: 50px;
+    color: rgb(136, 1, 28);
+    font-family: Lexend-Bold;
+}
+.text-content-about {
+    display: flex;
+    flex-direction: column;
+    color: rgb(136, 1, 28);
+    max-width: 550px;
+    margin-left: 25px;
+    align-content: center;
+}
+
+.text-content1-about h1 {
+    margin: 40;
+    font-size: 40px;
+    color: rgb(136, 1, 28);
+    font-family: Lexend-Bold;
+    align-content: center;
+    text-align: center;
+}
+
+.text-content1-about h3 {
+    margin: 40;
+    font-size: 20px;
+    color: rgb(136, 1, 28);
+    font-family: Lexend-Bold;
+    align-content: center;
+    text-align: center;
+}
