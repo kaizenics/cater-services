@@ -1,0 +1,212 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.order-info {
+  display: flex;
+  justify-content: center;
+  margin: 30px 100px 0 120px;
+}
+
+.order-info-up {
+  display: flex;
+}
+
+.order-info-up h1 {
+  font-size: 40px;
+  margin: 30px 0px 0px 10px;
+  font-family: Lexend-Medium;
+}
+
+.outline-payment {
+  margin: 30px 10px 0px 0px;
+  font-size: 55px;
+}
+
+.order-info-receipt {
+  max-width: 745px;
+  margin: 30px;
+}
+
+.order-text-info h2 {
+  font-family: Lexend-Medium;
+}
+
+.order-text-info p {
+  font-size: 17px;
+  font-family: Questrial;
+}
+
+.order-box {
+  width: 400px;
+  height: 370px;
+  padding-bottom: 130px;
+  margin: 40px 20px;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.order-box h1 {
+  text-align: center;
+  font-size: 20px;
+  font-family: Questrial;
+}
+
+.order-choices {
+  display: flex;
+}
+
+.cash-delivery-btn {
+  color: $mainColor;
+  margin-top: 50px;
+  margin-right: 10px;
+  padding: 10px 57px;
+  background-color: transparent;
+  opacity: 1;
+  text-align: center;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.online-payment-btn {
+  color: #054cd1;
+  margin-top: 50px;
+  margin-right: 10px;
+  padding: 10px 57px;
+  background-color: transparent;
+  opacity: 1;
+  text-align: center;
+  border: 2px solid #054cd1;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.cash-delivery-btn:hover {
+  color: #fff;
+  background-color: $mainColor;
+  cursor: pointer;
+}
+
+.online-payment-btn:hover {
+  color: #fff;
+  background-color: #054cd1;
+  cursor: pointer;
+}
+
+.cash-delivery-btn.selected {
+  color: #fff;
+  background-color: $mainColor;
+}
+
+.online-payment-btn.selected {
+  color: #fff;
+  background-color: #054cd1; 
+}
+
+.finish-pay-ctn {
+  margin-top: 100px;
+}
+
+.finish-pay-ctn p {
+  font-size: 15px;
+  font-family: Questrial;
+}
+
+.finish-pay-ctn p span {
+  color: $mainColor;
+  font-family: Questrial;
+}
+
+#terms-and-condition {
+  font-size: 11px;
+  margin-top: 30px;
+  text-align: justify;
+}
+
+.finish-pay {
+  color: #fff;
+  margin-right: 10px;
+  padding: 10px 300px;
+  background-color: $mainColor;
+  opacity: 1;
+  text-align: center;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.finish-pay:hover {
+  color: #fff;
+  background-color: #9c0120;
+}
+
+.order-receipt-1 {
+  display: flex;
+  justify-content: space-between;
+  margin: -10px 22px 0 22px;
+}
+
+.order-receipt-1 p {
+  font-size: 22px;
+  font-family: Questrial;
+}
+
+#p-span {
+  font-size: 22px;
+  font-family: Questrial;
+  color: $mainColor;
+}
+
+.order-sub-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 22px;
+  
+}
+
+.order-sub-total p {
+  font-size: 20px;
+  font-family: Questrial;
+  margin: -5px 0;
+}
+
+.order-del-fee {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 22px;
+}
+
+.order-del-fee p {
+  font-family: Questrial;
+}
+
+.order-all-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 22px;
+}
+
+.order-all-total h1 {
+  font-size: 20px;
+  font-family: Questrial;
+}
+
+.orders-total {
+  margin-top: 100px;
+}

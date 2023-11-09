@@ -82,7 +82,8 @@ $secColor: #89011c;
   border-radius: 10px;
   font-size: 18px;
   font-family: Lexend-Medium;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .dish-btn-1:hover {

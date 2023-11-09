@@ -15,69 +15,88 @@ export default function Login() {
 
   async function LoginHandler() {
     if (email === '' || password === '') {
-      setError('Please Input Email and Password to Proceed')
-      setEmailError(true)
-      setPasswordError(true)
+      setError('Please Input Email and Password to Proceed');
+      setEmailError(true);
+      setPasswordError(true);
     } else if (email === '') {
-      setEmailError(true)
-      setPasswordError(false)
+      setEmailError(true);
+      setPasswordError(false);
     } else if (password === '') {
-      setPasswordError(true)
-      setEmailError(false)
-    }
-    else {
+      setPasswordError(true);
+      setEmailError(false);
+    } else {
       try {
         var headers = {
           Accept: 'application/json',
-          'Content-Type' :'application.json'
+          'Content-Type': 'application/json',
         };
 
-        const url = "http://localhost/serverside/auth/AuthLogin.php";
+        const url = 'http://localhost/serverside/auth/AuthLogin.php';
         var data = {
           Email: email,
-          Password: password
-        }
-        console.log(data);
+          Password: password,
+        };
+
         const res = await fetch(url, {
           method: 'POST',
           headers: headers,
-          body: JSON.stringify(data)
-        }).then(response => response.json())
-         .then(response => {
-          console.log(response);
-          if (response.Message === 'Welcome!') {
-            window.localStorage.setItem('firstname', response.firstNameId)
-            window.localStorage.setItem('accountId', response.UserId)
-             
-             if (response.Role === 'admin') {
-               alert('Navigating to Admin Panel')
-               navigate('/AdminPanel')
-             } else {
-               alert("You have been Logged in!")
-               navigate('/Home')
-             }
+          body: JSON.stringify(data),
+        });
 
-          } else if (response.Message === 'Incorrect Email') {
-            alert("Incorrect Email")
-            setEmailError(true)
-            setPasswordError(false)
-          } else if (response.Message === 'Incorrect Password') {
-            alert("Incorrect Password")
-            setEmailError(true)
-            setPasswordError(false)
+        const response = await res.json();
+
+        if (response.Message === 'Welcome!') {
+          window.localStorage.setItem('firstname', response.firstNameId);
+          window.localStorage.setItem('accountId', response.UserId);
+
+          if (response.Role === 'admin') {
+            alert('Navigating to Admin Panel');
+            navigate('/AdminPanel');
           } else {
-            alert("Invalid or missing input data!")
-            setError(response.Message);
+            alert('You have been Logged in!');
+            navigate('/Home');
           }
-         }).catch(error => {
-           console.log(error)
-         })
+
+          const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+          const accountId = response.UserId;
+
+          if (cartItems.length > 0) {
+            const url = 'http://localhost/serverside/cart/addCartItems.php';
+            await fetch(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                account_id: accountId,
+                cart_items: cartItems,
+              }),
+            });
+          }
+          
+          localStorage.setItem('cartItemCount', cartItems.length);
+
+        } else if (response.Message === 'Incorrect Email') {
+          alert('Incorrect Email');
+          setEmailError(true);
+          setPasswordError(false);
+        } else if (response.Message === 'Incorrect Password') {
+          alert('Incorrect Password');
+          setEmailError(true);
+          setPasswordError(false);
+        } else {
+          alert('Invalid or missing input data!');
+          setError(response.Message);
+        }
       } catch (err) {
         console.log(err);
       }
-
-      }
     }
+  }
+
+  function handleLoginClick() {
+    setClicked(true);
+  }
 
   function handleLoginClick() {
     setClicked(true);

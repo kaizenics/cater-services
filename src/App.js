@@ -10,6 +10,10 @@ import AddItem from './pages/AddItem'
 import UpdateItem from './pages/UpdateItem'
 import DishOrder from './pages/DishOrder'
 import Cart from './pages/Cart'
+import OrderPayment from './pages/OrderPayment';
+import OrderReceipt from './pages/OrderReceipt';
+import Help from './pages/Help'
+import Profile from './pages/Profile'
 import './App.scss';
 
 function App() {
@@ -27,6 +31,10 @@ function App() {
       <Route path="/UpdateItem" element={<UpdateItem/>}/>
       <Route path="/DishOrder" element={<DishOrder/>}/>
       <Route path="/Cart" element={<Cart/>}/>
+      <Route path="/OrderPayment" element={<OrderPayment/>}/>
+      <Route path="/OrderReceipt" element={<OrderReceipt/>}/>
+      <Route path="/Help" element={<Help/>}/>
+      <Route path="/Profile" element={<Profile/>}/>
     </Routes>
    </>
   );

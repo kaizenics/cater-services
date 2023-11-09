@@ -37,13 +37,31 @@ export default function DishOrder() {
       price: selectedDish.price,
       quantity: quantity,
     };
-
+  
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     cartItems.push(cartItem);
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     setCartItemCount((prevCount) => prevCount + 1);
-
+  
     alert('Item added to cart!');
+
+    fetch("http://localhost/serverside/cart/addCartItems.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        account_id: window.localStorage.getItem('accountId'),
+        imageUrl: cartItem.imageUrl,
+        itemName: cartItem.itemName,
+        description: cartItem.description,
+        price: cartItem.price,
+        quantity: cartItem.quantity,
+      }),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
   }
 
   function shuffleArray(array) {
@@ -122,7 +140,7 @@ export default function DishOrder() {
               <div className="dish-buttons">
                   <button className="dish-btn-1" onClick={handleAddToCartClick}>Add to Cart</button>
                 <Link to="/Cart">
-                  <button className="dish-btn-1">Buy Now</button>
+                  <button className="dish-btn-1">Check Orders</button>
                 </Link>
               </div>
             </div>
