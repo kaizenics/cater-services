@@ -1,0 +1,79 @@
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend-Bold;
+    src: url(../fonts/Lexend-Bold.ttf);
+  }
+  
+  $mainColor: #b9052a;
+  $secColor: #89011c;
+
+
+  .profile-text {
+    display: flex;
+  }
+
+  .profile-user-icon {
+    margin: 30px 10px 0px 0px;
+    font-size: 55px;
+  }
+  
+  .profile-text h1 {
+    font-size: 40px;
+    margin: 30px 0px 0px 10px;
+    font-family: Lexend-Medium;
+  }
+
+  .profile-container {
+    margin: 30px 100px 0 120px;
+  }
+
+  .profile-info {
+    margin: 40px 0px 40px 100px;
+  }
+
+  .profile-info h1 {
+    font-size: 50px;
+    color: $mainColor;
+    text-align: left;
+    font-family: Lexend-Medium;
+  }
+
+  .profile-info h2 {
+    text-align: left;
+    font-size: 30px;
+    font-family: Lexend-Medium;
+  }
+
+  .profile-info h2 span {
+    font-family: Questrial;
+  }
+
+  .profile-box-ctn {
+    margin-left: 75px;
+  }
+
+  .profile-info-box {
+    width: 500px;
+    height: 200px;
+    background-color: #d3ffda;
+    border: 2px solid #dfdededc;
+    border-radius: 14px;
+    box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+    padding-bottom: 130px;
+    margin: 20px 25px;
+  }
+
+  .profile-info-box h1 {
+    margin: 25px 0px 0px 30px;
+    font-family: Lexend-Medium;
+    font-size: 20px;
+  }

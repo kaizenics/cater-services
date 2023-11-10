@@ -14,6 +14,8 @@ import OrderPayment from './pages/OrderPayment';
 import OrderReceipt from './pages/OrderReceipt';
 import Help from './pages/Help'
 import Profile from './pages/Profile'
+import UserMgt from './pages/UserMgt'
+import FAQ from './pages/FAQ'
 import './App.scss';
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
       <Route path="/OrderReceipt" element={<OrderReceipt/>}/>
       <Route path="/Help" element={<Help/>}/>
       <Route path="/Profile" element={<Profile/>}/>
+      <Route path="/UserMgt" element={<UserMgt/>}/>
+      <Route path="/FAQ" element={<FAQ/>}/>
     </Routes>
    </>
   );
