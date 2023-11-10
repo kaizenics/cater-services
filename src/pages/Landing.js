@@ -16,7 +16,7 @@ export default function Landing() {
             <img src={image} alt=""></img>
             <div className="img-overlay"></div>
             <div className="img-btn">
-              <Link to="/" className="direct-btn">
+              <Link to="/Login" className="direct-btn">
                 Request a Menu
               </Link>
             </div>
@@ -38,7 +38,7 @@ export default function Landing() {
               Philippines.
             </p>
             <div className="desc-btn">
-              <Link to="/" className="desc-text">
+              <Link to="/Login" className="desc-text">
                 Ready to Plan your Event?
               </Link>
             </div>
