@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import HomeNav from "../components/HomeNav";
 import "../styles/OrderPayment.scss";
 import { MdOutlinePayments } from "react-icons/md";
@@ -47,7 +48,9 @@ export default function OrderPayment() {
                   By making this purchase you agree to our{" "}
                   <span>Terms and Conditions</span>
                 </p>
+                <Link to="/OrderReceipt">
                 <button className="finish-pay">Finish and Pay</button>
+                </Link>
                 <p id="terms-and-condition"> Our policies and guidelines to ensure a fair and transparent interaction between users and our platform. By using our services, you agree to adhere to these terms, which outline your rights, responsibilities, and acceptable behavior. Please review them carefully for a seamless experience.</p>
               </div>
             </div>

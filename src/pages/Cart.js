@@ -21,6 +21,55 @@ export default function Cart() {
   const updatedCartItemCount = cartItems.length;
   localStorage.setItem("cartItemCount", updatedCartItemCount);
 
+  const handleBuyItem = (item) => {
+    const selectedItems = [item];
+    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+  
+    const accountId = window.localStorage.getItem("accountId");
+    const formData = new FormData();
+    formData.append('itemName', item.itemName);
+    formData.append('price', item.price);
+    formData.append('quantity', item.quantity);
+    formData.append('cart_id', item.cart_id);
+  
+    fetch('http://localhost/serverside/payment/addPayment.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+
+    })
+    .catch(error => console.error("Error:", error));
+    
+  };
+
+  const handleBuyAll = () => {
+    const accountId = window.localStorage.getItem("accountId");
+  
+    cartItems.forEach(item => {
+      const formData = new FormData();
+      formData.append('itemName', item.itemName);
+      formData.append('price', item.price);
+      formData.append('quantity', item.quantity);
+      formData.append('cart_id', item.cart_id);
+  
+      fetch('http://localhost/serverside/payment/addPayment.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+  
+      })
+      .catch(error => console.error("Error:", error));
+    });
+
+  };
+  
+  
   const handleDeleteItem = (cart_id) => {
     const confirmation = window.confirm(
       "Are you sure you want to remove this item?"
@@ -54,11 +103,6 @@ export default function Cart() {
       .catch((error) => console.error("Error:", error));
   };
 
-  const handleBuy = (item) => {
-    const selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || [];
-    selectedItems.push(item);
-    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-  };
 
   return (
     <>
@@ -70,7 +114,9 @@ export default function Cart() {
             <BsCart3 className="bs-cart" />
             <h1>Cart Items</h1>
             {cartItems.length >= 2 && (
+              <Link to="/OrderPayment" onClick={handleBuyAll}>
               <button className="buy-all">Buy All</button>
+              </Link>
             )}
           </div>
           <div className="cart-box-container">
@@ -90,7 +136,7 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className="cart-buttons">
-                    <Link to="/OrderPayment" onClick={() => handleBuy(item)}>
+                    <Link to="/OrderPayment" onClick={() => handleBuyItem(item)}>
                       <button className="cart-buy">Buy</button>
                     </Link>
                     <button
