@@ -22,6 +22,9 @@ export default function Navbar() {
                     <li className="navbar-item">
                         <Link to="/About">About</Link>
                     </li>
+                    <li className="navbar-item">
+                        <Link to="/FAQ">FAQ</Link>
+                    </li>
                 </ul>
                     <div className="connect-btn">
                         <Link to="/Signup" className="btn">Get Started</Link>

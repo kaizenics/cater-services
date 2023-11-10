@@ -59,8 +59,10 @@ export default function HomeNavbar() {
                 <h4>{localStorage.getItem("firstname")}</h4>
               </div>
               <div className="dropdown-content">
-                <a href="#">Profile</a>
-                <a href="#">FAQ</a>
+
+                <a href="/Profile">Profile</a>
+  
+                <a href="/Help">FAQ</a>
                 <a href="#" className="logout-btn" onClick={logout}>
                   Logout
                 </a>
