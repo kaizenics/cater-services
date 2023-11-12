@@ -10,7 +10,6 @@ export default function SideNavbar() {
      <nav className="side-navbar">
       <div className="home-title">
         <img src={icon} className="side-icon" alt="Icon" />
-        
       </div>
       <ul className="sidebar-menu">
         <li>
