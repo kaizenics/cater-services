@@ -24,52 +24,47 @@ export default function Cart() {
   const handleBuyItem = (item) => {
     const selectedItems = [item];
     localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-  
+
     const accountId = window.localStorage.getItem("accountId");
     const formData = new FormData();
-    formData.append('itemName', item.itemName);
-    formData.append('price', item.price);
-    formData.append('quantity', item.quantity);
-    formData.append('cart_id', item.cart_id);
-  
-    fetch('http://localhost/serverside/payment/addPayment.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
+    formData.append("p_itemName", item.itemName);
+    formData.append("p_price", item.price);
+    formData.append("p_quantity", item.quantity);
+    formData.append("p_cart_id", item.cart_id);
 
+    fetch("http://localhost/serverside/payment/addPayment.php", {
+      method: "POST",
+      body: formData,
     })
-    .catch(error => console.error("Error:", error));
-    
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
   const handleBuyAll = () => {
     const accountId = window.localStorage.getItem("accountId");
-  
-    cartItems.forEach(item => {
-      const formData = new FormData();
-      formData.append('itemName', item.itemName);
-      formData.append('price', item.price);
-      formData.append('quantity', item.quantity);
-      formData.append('cart_id', item.cart_id);
-  
-      fetch('http://localhost/serverside/payment/addPayment.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-  
-      })
-      .catch(error => console.error("Error:", error));
-    });
 
+    cartItems.forEach((item) => {
+      const formData = new FormData();
+      formData.append("itemName", item.itemName);
+      formData.append("price", item.price);
+      formData.append("quantity", item.quantity);
+      formData.append("cart_id", item.cart_id);
+
+      fetch("http://localhost/serverside/payment/addPayment.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => console.error("Error:", error));
+    });
   };
-  
-  
+
   const handleDeleteItem = (cart_id) => {
     const confirmation = window.confirm(
       "Are you sure you want to remove this item?"
@@ -93,16 +88,15 @@ export default function Cart() {
             (item) => item.cart_id !== cart_id
           );
           setCartItems(updatedCartItems);
-          
+
           const updatedCartItemCount = updatedCartItems.length;
-          localStorage.setItem('cartItemCount', updatedCartItemCount);
+          localStorage.setItem("cartItemCount", updatedCartItemCount);
         } else {
           alert("Error removing item from cart: " + data.Message);
         }
       })
       .catch((error) => console.error("Error:", error));
   };
-
 
   return (
     <>
@@ -115,7 +109,7 @@ export default function Cart() {
             <h1>Cart Items</h1>
             {cartItems.length >= 2 && (
               <Link to="/OrderPayment" onClick={handleBuyAll}>
-              <button className="buy-all">Buy All</button>
+                <button className="buy-all">Buy All</button>
               </Link>
             )}
           </div>
@@ -136,7 +130,10 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className="cart-buttons">
-                    <Link to="/OrderPayment" onClick={() => handleBuyItem(item)}>
+                    <Link
+                      to="/OrderPayment"
+                      onClick={() => handleBuyItem(item)}
+                    >
                       <button className="cart-buy">Buy</button>
                     </Link>
                     <button

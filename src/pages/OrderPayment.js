@@ -7,15 +7,27 @@ import { MdOutlinePayments } from "react-icons/md";
 export default function OrderPayment() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [totalBill, setTotalBill] = useState(0);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("selectedItems")) || [];
     setSelectedItems(items);
+
+    const cart_id = items.length > 0 ? items[0].cart_id : null;
+    if (cart_id) {
+      fetch(`http://localhost/serverside/payment/getPaymentDetails.php?cart_id=${cart_id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setTotalBill(data.totalbill || 0);
+        })
+        .catch((error) => console.error("Error fetching payment details:", error));
+    }
   }, []);
 
   const handleSelectPaymentMethod = (method) => {
     setSelectedPaymentMethod(method);
   };
+
   return (
     <>
       <HomeNav />
@@ -68,7 +80,7 @@ export default function OrderPayment() {
                 <div className="orders-total">
                   <div className="order-sub-total">
                     <p>Subtotal</p>
-                    <p>PHP 0.00</p>
+                    <p>PHP {totalBill.toFixed(2)}</p>
                   </div>
                   <div className="order-del-fee">
                     <p>Delivery Fee</p>
@@ -76,7 +88,7 @@ export default function OrderPayment() {
                   </div>
                   <div className="order-all-total">
                     <h1>Total</h1>
-                    <h1>PHP 0.00</h1>
+                    <h1>PHP {totalBill.toFixed(2)}</h1>
                   </div>
                 </div>
               </div>
