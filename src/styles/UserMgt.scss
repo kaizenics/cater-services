@@ -1,0 +1,69 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.user-container {
+  display: flex;
+}
+
+.user-mgt-body {
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.user-mgt-container {
+    margin: 10px 0px 0px 40px;
+}
+
+.user-mgt-text {
+  display: flex;
+}
+
+.purchase-tag {
+  margin: 30px 10px 0px 0px;
+  font-size: 55px;
+}
+
+.user-mgt-text h1 {
+  font-size: 40px;
+  margin: 30px 0px 0px 10px;
+  font-family: Lexend-Medium;
+}
+
+.purchase-box {
+    width: 460px;
+    height: 210px;
+    background-color: #d3ecff;
+    border: 2px solid #dfdededc;
+    border-radius: 14px;
+    box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+    padding-bottom: 130px;
+    margin: 20px 25px;
+}
+
+.purchase-box h1 {
+    margin: 18px 20px 0px 20px;
+    font-family: Lexend-Medium;
+    font-size: 15px;
+}
+
+.purchase-box p {
+    margin: 40px 20px 0px 20px;
+    color: $mainColor;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.purchase-box h1 span {
+    font-family: Questrial;
+    font-size: 15px;
+}
