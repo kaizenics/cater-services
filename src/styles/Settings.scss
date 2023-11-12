@@ -1,0 +1,58 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.settings-ctn {
+  display: flex;
+}
+
+.settings-body {
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.settings-container {
+  margin: 10px 0px 0px 40px;
+}
+
+.setting-gear {
+  margin: 30px 10px 0px 0px;
+  font-size: 55px;
+}
+
+.settings-text {
+  display: flex;
+}
+
+.settings-text h1 {
+  font-size: 40px;
+  margin: 30px 0px 0px 10px;
+  font-family: Lexend-Medium;
+}
+
+.admin-setting-ctn {
+    margin: 40px 0px 0px 40px;
+}
+
+.admin-logout {
+    color: #fff;
+    margin-left: 10px;
+    padding: 13px 19px;
+    background-color: $mainColor;
+    opacity: 1;
+    border: 2px solid $mainColor;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Lexend-Medium;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
