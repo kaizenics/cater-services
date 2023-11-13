@@ -1,0 +1,51 @@
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend-Bold;
+    src: url(../fonts/Lexend-Bold.ttf);
+  }
+
+  $mainColor: #b9052a;
+  $secColor: #89011c;
+
+  .terms-container h1 {
+  align-items: center;
+  text-align: center;
+  font-size: 50px;
+  font-family: Lexend-Bold;
+  color: #89011c;
+  }
+
+  .terms-container h2 {
+    align-items: center;
+    text-align: left;
+    font-size: 35px;
+    font-family: Questrial;
+    }
+
+    .terms-container p {
+      align-items: center;
+      text-align: left;
+      font-size: 25px;
+      font-family: Questrial;
+      margin: 0px 60px 0px 60px;
+      }
+
+
+
+
+  .terms-box {
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin: 30px 200px 90px 200px;
+
+}
