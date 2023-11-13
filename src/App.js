@@ -10,8 +10,12 @@ import AddItem from './pages/AddItem'
 import UpdateItem from './pages/UpdateItem'
 import DishOrder from './pages/DishOrder'
 import Cart from './pages/Cart'
-import Receipt from './pages/Receipt';
-import Terms from './pages/Terms';
+import OrderPayment from './pages/OrderPayment';
+import OrderReceipt from './pages/OrderReceipt';
+import Help from './pages/Help'
+import Profile from './pages/Profile'
+import UserMgt from './pages/UserMgt'
+import FAQ from './pages/FAQ'
 import './App.scss';
 
 function App() {
@@ -29,8 +33,12 @@ function App() {
       <Route path="/UpdateItem" element={<UpdateItem/>}/>
       <Route path="/DishOrder" element={<DishOrder/>}/>
       <Route path="/Cart" element={<Cart/>}/>
-      <Route path="/Receipt" element={<Receipt/>}/>
-      <Route path="/Terms" element={<Terms/>}/>
+      <Route path="/OrderPayment" element={<OrderPayment/>}/>
+      <Route path="/OrderReceipt" element={<OrderReceipt/>}/>
+      <Route path="/Help" element={<Help/>}/>
+      <Route path="/Profile" element={<Profile/>}/>
+      <Route path="/UserMgt" element={<UserMgt/>}/>
+      <Route path="/FAQ" element={<FAQ/>}/>
     </Routes>
    </>
   );

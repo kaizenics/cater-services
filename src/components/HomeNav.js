@@ -9,9 +9,21 @@ export default function HomeNavbar() {
   const navigate = useNavigate();
   const [cartItemCount, setCartItemCount] = useState(0);
 
+  const getCartItemCountFromServer = () => {
+    fetch('http://localhost/serverside/cart/getCartItemCount.php')
+      .then(response => response.json())
+      .then(data => {
+        setCartItemCount(data.cartItemCount);
+      })
+      .catch(error => console.error('Error:', error));
+  };
+
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    setCartItemCount(storedCartItems.length);
+    const itemCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
+    setCartItemCount(itemCount || storedCartItems.length);
+    
+    getCartItemCountFromServer();
   }, []);
 
   const toggleDropdown = () => {
@@ -25,6 +37,8 @@ export default function HomeNavbar() {
       return;
     } else {
       localStorage.removeItem("firstname");
+      localStorage.removeItem("cartItems");
+      localStorage.removeItem('cartItemCount');
       navigate("/");
     }
   };
@@ -45,7 +59,10 @@ export default function HomeNavbar() {
                 <h4>{localStorage.getItem("firstname")}</h4>
               </div>
               <div className="dropdown-content">
-                <a href="#">Profile</a>
+
+                <a href="/Profile">Profile</a>
+  
+                <a href="/Help">FAQ</a>
                 <a href="#" className="logout-btn" onClick={logout}>
                   Logout
                 </a>
@@ -55,8 +72,9 @@ export default function HomeNavbar() {
           
           <Link to="/Cart" className="home-nav-button">
             <FaShoppingBag className="fa-icon-1" />
-            {cartItemCount > 0 && <span className="cart-item-count">{cartItemCount} Items</span>}
+            {cartItemCount > 0 && <span className="cart-item-count">{cartItemCount} Item/s</span>}
           </Link>
+
           </div>
       </nav>
     </>

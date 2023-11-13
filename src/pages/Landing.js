@@ -16,7 +16,7 @@ export default function Landing() {
             <img src={image} alt=""></img>
             <div className="img-overlay"></div>
             <div className="img-btn">
-              <Link to="/" className="direct-btn">
+              <Link to="/Login" className="direct-btn">
                 Request a Menu
               </Link>
             </div>
@@ -38,7 +38,7 @@ export default function Landing() {
               Philippines.
             </p>
             <div className="desc-btn">
-              <Link to="/" className="desc-text">
+              <Link to="/Login" className="desc-text">
                 Ready to Plan your Event?
               </Link>
             </div>
@@ -53,9 +53,9 @@ export default function Landing() {
               <div className="text-content">
                 <h1>Dishes got Tastier!</h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse aliquam elit at velit aliquam posuere. Aenean
-                  neque risus, interdum at dapibus vel, vestibulum eget lacus.
+                Indulge in a culinary delight like never before! Our dishes are meticulously 
+                crafted to tantalize your taste buds and leave you craving for more. From savory 
+                to sweet, each bite is a symphony of flavors that will transport you to food paradise.
                 </p>
                 <div className="text-btn-container">
                   <div className="text-btn">explore our website</div>
@@ -68,9 +68,7 @@ export default function Landing() {
               <div className="text-content">
                 <h1>Open Source Web</h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse aliquam elit at velit aliquam posuere. Aenean
-                  neque risus, interdum at dapibus vel, vestibulum eget lacus.
+                  LIndulge yourself in a gastronomic delight with our exquisite cuisine delivered to your doorsteps. Our service is impeccable, our food is delectable, and our prices are unbeatable. Don't miss this opportunity to treat yourself to a heavenly meal that will satisfy your taste buds and your wallet.
                 </p>
                 <div className="text-btn-container">
                   <div className="text-btn">explore our website</div>
@@ -89,11 +87,7 @@ export default function Landing() {
               <span>sample menus.</span>
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              pellentesque erat ullamcorper, elementum purus pellentesque,
-              suscipit ante. Interdum et malesuada fames ac ante ipsum primis in
-              faucibus. Integer ac augue erat. Quisque tristique ultricies
-              elementum. Maecenas sollicitudin quam in iaculis molestie
+            We serve a wide range of tasty Filipino cuisine that suits the tastebuds of customers. Whether you crave for adobo, sigsig, or pancit, we have it all and more. Come and visit us today and experience the authentic flavors of the Philippines.
             </p>
             <div className="mid-btn">
               <Link to="/" className="mid-text">

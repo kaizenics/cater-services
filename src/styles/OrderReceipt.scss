@@ -1,0 +1,84 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Bold;
+  src: url(../fonts/Lexend-Bold.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.order-receipt-text {
+  margin-top: 100px;
+}
+.order-receipt-text h1 {
+  text-align: center;
+  font-size: 45px;
+  font-family: Lexend-Medium;
+}
+
+.order-receipt-text p {
+  text-align: center;
+  font-size: 25px;
+  font-family: Questrial;
+}
+
+.set-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.set-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+.back-btn {
+    color: #fff;
+    margin-left: 10px;
+    padding: 13px 19px;
+    background-color: $mainColor;
+    opacity: 1;
+    border: 2px solid $mainColor;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Lexend-Medium;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #9c0120;
+}
+
+.receipt-box {
+  width: 900px;
+  height: 350px;
+  background-color: #ffffff54;
+  border: 2px solid #dfdededc;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px 6px #dfdfdfd3;
+  padding-bottom: 130px;
+  margin: 20px 25px;
+}
+
+.receipt-box h1 {
+    margin: 30px 0px 0px 40px;
+    font-size: 25px;
+    font-family: Lexend-Medium;
+}
+
+.receipt-box h1 span {
+    font-size: 25px;
+    font-family: Questrial;
+}

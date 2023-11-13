@@ -1,0 +1,74 @@
+@font-face {
+  font-family: Questrial;
+  src: url(../fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(../fonts/Lexend-Medium.ttf);
+}
+
+@font-face {
+  font-family: Lexend-Bold;
+  src: url(../fonts/Lexend-Bold.ttf);
+}
+
+$mainColor: #b9052a;
+$secColor: #89011c;
+
+.faq-container {
+  margin: 30px 100px 0px 120px;
+}
+
+.faq-text {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.faq-text h1 {
+  font-size: 40px;
+  margin: 30px 0px 0px 10px;
+  font-family: Lexend-Medium;
+}
+
+.question-chat {
+  margin: 30px 10px 0px 0px;
+  font-size: 55px;
+}
+
+.accordion-container {
+  .accordion-item {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+
+    .accordion-header {
+      cursor: pointer;
+      padding: 20px;
+      font-size: 30px;
+      background-color: #f5f5f5;
+      font-family: "Lexend-Bold";
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+
+    .accordion-content {
+      max-height: 0;
+      font-size: 25px;
+      overflow: hidden;
+      margin-top: 10px;
+      padding: 2px 0px 0px 20px;
+      font-family: Questrial;
+      transition: max-height 0.5s ease;
+
+      &.active {
+        font-size: 25px;
+        max-height: 1000px;
+        margin-top: 10px;
+        font-family: Questrial;
+      }
+    }
+  }
+}

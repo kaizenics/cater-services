@@ -15,7 +15,7 @@ export default function Footer() {
          <section className="footer-container">
          <div className="column">
                     <h4>Resources</h4>
-                    <Link to="/" className="column-hover">
+                    <Link to="/FAQ" className="column-hover">
                         <p>Help</p>
                     </Link>
                     <Link to="/" className="column-hover">
@@ -24,7 +24,7 @@ export default function Footer() {
                 </div>
                 <div className="column">
                     <h4>Socials</h4>
-                    <a href="https://facebook.com/kaisernics/" target="_blank" className="column-hover">
+                    <a href="https://facebook.com/kaizernics/" target="_blank" className="column-hover">
                         <p>Facebook</p>
                     </a>
                     <a href="https://instagram.com/kaizenics/" target="_blank" className="column-hover">
@@ -36,7 +36,7 @@ export default function Footer() {
                 </div>
                 <div className="column">
                     <h4>Support</h4>
-                    <Link to="/" className="column-hover">
+                    <Link to="/FAQ" className="column-hover">
                         <p>FAQ</p>
                     </Link>
                     <Link to="/" className="column-hover">

@@ -20,10 +20,10 @@ export default function Navbar() {
                         <Link to="/Login">Login</Link>
                     </li>
                     <li className="navbar-item">
-                        <Link to="/Signup">Menu</Link>
+                        <Link to="/About">About</Link>
                     </li>
                     <li className="navbar-item">
-                        <Link to="/About">About</Link>
+                        <Link to="/FAQ">FAQ</Link>
                     </li>
                 </ul>
                     <div className="connect-btn">
