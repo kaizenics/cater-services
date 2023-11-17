@@ -13,29 +13,39 @@ export default function Help() {
 
   const faqData = [
     {
-      question: "What is your return policy?",
+      question: "Q: What is Ate Gang's Catering Services?",
       answer:
-        "Our return policy allows you to return items within 30 days of purchase. Please check our Returns and Exchanges page for more details.",
+        "Ate Gang's Catering Services is a local business in the Panabo area that offers catering services to its clients.",
+  },
+    {
+      question: "Q: How can I place an order with Ate Gang's Catering Services?",
+      answer:
+        "A: You can place an order with Ate Gang's Catering Services by using the online ordering ",
     },
     {
-      question: "How do I track my order?",
+      question: "Q: How does the online food ordering method work?",
       answer:
-        'You can easily track your order by logging into your account on our website. Once logged in, go to the "Order History" section to view the status and tracking information.',
+        'Customers can order food online and have it delivered to their location.',
     },
     {
-      question: "Do you offer international shipping?",
+      question: "Q: Can I customize my order?",
       answer:
-        "Yes, we offer international shipping. Shipping rates and delivery times vary depending on the destination. Please refer to our Shipping page for more information.",
+        "Yes, you can customize your order by selecting the dishes you want from the menu ",
     },
     {
-      question: "Do you offer international shipping?",
+      question: "Q: How do I pay for my order?",
       answer:
-        "Yes, we offer international shipping. Shipping rates and delivery times vary depending on the destination. Please refer to our Shipping page for more information.",
+        "You can pay for your order online by Cash on Delivery or Gcash Online Payment Services.",
     },
     {
-      question: "What is your return policy?",
+      question: "Q: How does Ate Gang's Catering Services ensure the quality and safety of its food?",
       answer:
-        "Our return policy allows you to return items within 30 days of purchase. Please check our Returns and Exchanges page for more details.",
+        "A: Ate Gang's Catering Services follows strict food safety guidelines and uses high-quality ingredients to ensure the quality and safety of its food.",
+    },
+    {
+      question: "Q: What is the delivery time for my order?",
+      answer:
+        "A: Delivery times vary depending on your location and the volume of orders. ",
     },
   ];
 

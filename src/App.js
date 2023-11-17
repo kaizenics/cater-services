@@ -17,6 +17,7 @@ import Profile from './pages/Profile'
 import UserMgt from './pages/UserMgt'
 import FAQ from './pages/FAQ'
 import './App.scss';
+import Terms from './pages/Terms';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
       <Route path="/Profile" element={<Profile/>}/>
       <Route path="/UserMgt" element={<UserMgt/>}/>
       <Route path="/FAQ" element={<FAQ/>}/>
+      <Route path="/Terms" element={<Terms/>}/>
     </Routes>
    </>
   );

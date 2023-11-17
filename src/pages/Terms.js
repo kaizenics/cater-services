@@ -24,7 +24,7 @@ function Terms() {
                 <h2>4. Ordering Process:</h2>
                 <p>The Ordering System allows you to place orders for food products offered by Ate Gang's Catering Services. By placing an order, you agree to pay for the products ordered. All orders are subject to acceptance by Ate Gang's Catering Services, and the company reserves the right to reject any order in its sole discretion.</p>
                 <h2>5. Payment and Pricing:</h2>
-                <p>All prices are listed in Philippine Peso (PHP) and are subject to change without notice. Payment for orders must be made in advance, and the Ordering System accepts various payment methods, including credit cards and online payment services.</p>
+                <p>All prices are listed in Philippine Peso (PHP) and are subject to change without notice. Payment for orders must be made in advance, and the Ordering System accepts various payment methods, including Cash on Delivery and Gcash Online Payment services.</p>
                 <h2>6. Delivery:</h2>
                 <p>Delivery of food products is subject to the terms and conditions of Ate Gang's Catering Services' delivery policy. Ate Gang's Catering Services shall not be liable for any delay or failure to deliver the products ordered due to unforeseen circumstances, including but not limited to traffic, weather conditions, and other events beyond its control.</p>
                 <h2>7. Intellectual Property:</h2>
