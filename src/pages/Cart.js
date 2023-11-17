@@ -48,10 +48,10 @@ export default function Cart() {
 
     cartItems.forEach((item) => {
       const formData = new FormData();
-      formData.append("itemName", item.itemName);
-      formData.append("price", item.price);
-      formData.append("quantity", item.quantity);
-      formData.append("cart_id", item.cart_id);
+      formData.append("p_itemName", item.itemName);
+      formData.append("p_price", item.price);
+      formData.append("p_quantity", item.quantity);
+      formData.append("p_cart_id", item.cart_id);
 
       fetch("http://localhost/serverside/payment/addPayment.php", {
         method: "POST",
@@ -107,11 +107,11 @@ export default function Cart() {
           <div className="cart-info-above">
             <BsCart3 className="bs-cart" />
             <h1>Cart Items</h1>
-            {cartItems.length >= 2 && (
+            { /*cartItems.length >= 2 && (
               <Link to="/OrderPayment" onClick={handleBuyAll}>
                 <button className="buy-all">Buy All</button>
               </Link>
-            )}
+            ) */}
           </div>
           <div className="cart-box-container">
             {cartItems.map((item, index) => (
