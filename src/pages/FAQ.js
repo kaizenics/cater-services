@@ -3,14 +3,14 @@ import Footer from "../components/Footer";
 import "../styles/Help.scss";
 import { RiQuestionnaireLine } from "react-icons/ri";
 import { useState } from "react";
-
+ 
 export default function Help() {
   const [activeAccordion, setActiveAccordion] = useState(null);
-
+ 
   const handleAccordionClick = (index) => {
     setActiveAccordion(index === activeAccordion ? null : index);
   };
-
+ 
   const faqData = [
     {
       question: "What is your return policy?",
@@ -38,7 +38,7 @@ export default function Help() {
         "Our return policy allows you to return items within 30 days of purchase. Please check our Returns and Exchanges page for more details.",
     },
   ];
-
+ 
   return (
     <>
       <Navbar />
