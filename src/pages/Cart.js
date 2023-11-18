@@ -43,7 +43,7 @@ export default function Cart() {
       .catch((error) => console.error("Error:", error));
   };
 
-  const handleBuyAll = () => {
+ /* const handleBuyAll = () => {
     const accountId = window.localStorage.getItem("accountId");
 
     cartItems.forEach((item) => {
@@ -63,7 +63,7 @@ export default function Cart() {
         })
         .catch((error) => console.error("Error:", error));
     });
-  };
+  }; */
 
   const handleDeleteItem = (cart_id) => {
     const confirmation = window.confirm(
