@@ -64,7 +64,7 @@ export default function OrderPayment() {
 
   const handleFinishAndPay = async () => {
     const cartId = selectedItems.length > 0 ? selectedItems[0].cart_id : null;
-  
+
     if (cartId) {
       try {
         const response = await fetch('http://localhost/serverside/orders/insertOrder.php', {
@@ -76,21 +76,27 @@ export default function OrderPayment() {
             cart_id: cartId,
           }),
         });
-  
+
         const data = await response.json();
-  
+
         if (data.success) {
           console.log('Order completed successfully');
-  
 
-          const orderDetailsResponse = await fetch(`http://localhost/serverside/orders/getOrderDetails.php?cart_id=${cartId}`);
+          const orderDetailsResponse = await fetch(
+            `http://localhost/serverside/orders/getOrderDetails.php?cart_id=${cartId}`
+          );
           const orderDetailsData = await orderDetailsResponse.json();
 
-          const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
-  
-          const updatedOrders = [...existingOrders, orderDetailsData];
+          const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+          
+          const orderExists = existingOrders.some(
+            (order) => order.invoiceNum === orderDetailsData.invoiceNum
+          );
 
-          localStorage.setItem('orders', JSON.stringify(updatedOrders));
+          if (!orderExists) {
+            const updatedOrders = [...existingOrders, orderDetailsData];
+            localStorage.setItem('orders', JSON.stringify(updatedOrders));
+          }
         } else {
           console.error('Failed to complete order:', data.error);
         }
