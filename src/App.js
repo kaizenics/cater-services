@@ -16,6 +16,8 @@ import Help from './pages/Help'
 import Profile from './pages/Profile'
 import UserMgt from './pages/UserMgt'
 import FAQ from './pages/FAQ'
+import AdminLogin from './pages/AdminLogin'
+import Terms from './pages/Terms'
 import './App.scss';
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
       <Route path="/Profile" element={<Profile/>}/>
       <Route path="/UserMgt" element={<UserMgt/>}/>
       <Route path="/FAQ" element={<FAQ/>}/>
+      <Route path="/AdminLogin" element={<AdminLogin/>}/>
+      <Route path="/Terms" element={<Terms/>}/>
     </Routes>
    </>
   );
