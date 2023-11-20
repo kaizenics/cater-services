@@ -98,3 +98,15 @@ $secColor: #89011c;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 20px;
 }
+
+/* Add these styles to your CSS file */
+.purchase-box.order-done,
+.profile-info-box.order-done {
+  background-color: #4caf50; /* Green background color */
+  color: white;
+}
+
+.order-done-btn {
+  background-color: #4caf50;
+  color: white;
+}

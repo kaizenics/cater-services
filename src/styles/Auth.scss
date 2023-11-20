@@ -25,7 +25,7 @@ $mainColor: #f52020dc;
 
 .box-container {
    width: 24%;
-   height: 430px;
+   height: 450px;
    background-color: transparent;
    border: 2px solid #c4c3c3dc;
    border-radius: 35px;
@@ -131,6 +131,11 @@ $mainColor: #f52020dc;
     background-color: gray;
 }
 
+.admin-login-btn {
+    color: $mainColor;
+    font-size: 15px;
+}
+
 /* SIGN UP */
 
 .box-container-1 {
@@ -165,5 +170,18 @@ $mainColor: #f52020dc;
     border-radius: 35px;
     box-shadow: 0px 0px 10px 4px #e4e4e4;
     margin-top: 8%;
+    margin-bottom: 17%;
+ }
+
+ /* ADMIN LOGIN */
+
+ .box-container-3 {
+    width: 24%;
+    height: 410px;
+    background-color: transparent;
+    border: 2px solid #c4c3c3dc;
+    border-radius: 35px;
+    box-shadow: 0px 0px 10px 4px #e4e4e4;
+    margin-top: 6%;
     margin-bottom: 17%;
  }

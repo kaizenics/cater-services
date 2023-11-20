@@ -64,14 +64,40 @@ $secColor: #89011c;
     font-size: 15px;
 }
 
-.purchase-box p {
-    margin: 40px 20px 0px 20px;
-    color: $mainColor;
-    text-decoration: underline;
-    cursor: pointer;
-}
 
 .purchase-box h1 span {
     font-family: Questrial;
     font-size: 15px;
+}
+
+.user-mgt-btn {
+  display: flex;
+
+  h1 {
+    margin: 40px 20px 0px 20px;
+    font-size: 15px;
+    color: #8DDC86;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  h2 {
+    margin: 40px 20px 0px 20px;
+    font-size: 15px;
+    color: $mainColor;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+/* Add these styles to your CSS file */
+.purchase-box.order-done,
+.profile-info-box.order-done {
+  background-color: #4caf50; /* Green background color */
+  color: white;
+}
+
+.order-done-btn {
+  background-color: #4caf50;
+  color: white;
 }
