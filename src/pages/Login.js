@@ -141,12 +141,18 @@ export default function Login() {
             >
               Login
             </button>
+        <h5>
+              <Link to="/AdminLogin" className="admin-login-btn">
+              Admin Login
+              </Link>
+            </h5>
             <h5>
               Don't have an account?{" "}
               <Link to="/Signup" className="direct-auth">
                 Get Started
               </Link>
             </h5>
+            
           </div>
         </div>
       </section>

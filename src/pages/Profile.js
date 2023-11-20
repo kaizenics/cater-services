@@ -158,7 +158,7 @@ export default function Profile() {
             {groupOrdersIntoRows(orderDetails).map((row, rowIndex) => (
               <div className="profile-info-row" key={rowIndex}>
                 {row.map((order, index) => (
-                  <div className="profile-info-box" key={index}>
+                  <div className={`profile-info-box ${order.isOrderDone ? 'order-done' : ''}`} key={index}>
                     <h1>
                       Invoice Number: <span>{order.invoiceNum}</span>
                     </h1>
@@ -178,7 +178,7 @@ export default function Profile() {
                       Date Issued: <span>{order.addDate}</span>
                     </h1>
                     <h1>
-                      Total Bill: <span>{order.totalbill}</span>
+                      Total Bill: <span>{order.totalbill} PHP</span>
                     </h1>
                     <div className="profile-line-btn">
                     <p onClick={() => handleCancelOrder(order.invoiceNum)}>Cancel Order</p>

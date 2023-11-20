@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import HomeNav from '../components/HomeNav';
-import { MdOutlinePayments } from 'react-icons/md';
-import '../styles/OrderPayment.scss';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import HomeNav from "../components/HomeNav";
+import { MdOutlinePayments } from "react-icons/md";
+import "../styles/OrderPayment.scss";
 
 export default function OrderPayment() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
@@ -10,18 +10,22 @@ export default function OrderPayment() {
   const [totalBill, setTotalBill] = useState(0);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    const items = JSON.parse(localStorage.getItem("selectedItems")) || [];
     setSelectedItems(items);
 
     const cart_id = items.length > 0 ? items[0].cart_id : null;
     if (cart_id) {
-      fetch(`http://localhost/serverside/payment/getPaymentDetails.php?cart_id=${cart_id}`)
+      fetch(
+        `http://localhost/serverside/payment/getPaymentDetails.php?cart_id=${cart_id}`
+      )
         .then((response) => response.json())
         .then((data) => {
           setTotalBill(data.totalbill || 0);
           setSelectedPaymentMethod(data.payment_method || null);
         })
-        .catch((error) => console.error('Error fetching payment details:', error));
+        .catch((error) =>
+          console.error("Error fetching payment details:", error)
+        );
     }
   }, []);
 
@@ -30,10 +34,10 @@ export default function OrderPayment() {
 
     const cartId = selectedItems.length > 0 ? selectedItems[0].cart_id : null;
 
-    fetch('http://localhost/serverside/payment/updatePaymentMethod.php', {
-      method: 'POST',
+    fetch("http://localhost/serverside/payment/updatePaymentMethod.php", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         cart_id: cartId,
@@ -43,20 +47,20 @@ export default function OrderPayment() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          console.log('Payment method updated successfully');
+          console.log("Payment method updated successfully");
         } else {
-          console.error('Failed to update payment method:', data.error);
+          console.error("Failed to update payment method:", data.error);
         }
       })
-      .catch((error) => console.error('Error updating payment method:', error));
+      .catch((error) => console.error("Error updating payment method:", error));
   };
 
   const getPaymentValue = () => {
     switch (selectedPaymentMethod) {
-      case 'GCash':
-        return 'GCash';
-      case 'Cash on Delivery':
-        return 'Cash on Delivery';
+      case "GCash":
+        return "GCash";
+      case "Cash on Delivery":
+        return "Cash on Delivery";
       default:
         return null;
     }
@@ -67,45 +71,47 @@ export default function OrderPayment() {
 
     if (cartId) {
       try {
-        const response = await fetch('http://localhost/serverside/orders/insertOrder.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            cart_id: cartId,
-          }),
-        });
+        const response = await fetch(
+          "http://localhost/serverside/orders/insertOrder.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              cart_id: cartId,
+            }),
+          }
+        );
 
         const data = await response.json();
 
         if (data.success) {
-          console.log('Order completed successfully');
+          console.log("Order completed successfully");
 
           const orderDetailsResponse = await fetch(
             `http://localhost/serverside/orders/getOrderDetails.php?cart_id=${cartId}`
           );
           const orderDetailsData = await orderDetailsResponse.json();
 
-          const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
-          
+          const existingOrders =
+            JSON.parse(localStorage.getItem("orders")) || [];
           const orderExists = existingOrders.some(
             (order) => order.invoiceNum === orderDetailsData.invoiceNum
           );
 
           if (!orderExists) {
             const updatedOrders = [...existingOrders, orderDetailsData];
-            localStorage.setItem('orders', JSON.stringify(updatedOrders));
+            localStorage.setItem("orders", JSON.stringify(updatedOrders));
           }
         } else {
-          console.error('Failed to complete order:', data.error);
+          console.error("Failed to complete order:", data.error);
         }
       } catch (error) {
-        console.error('Error completing order:', error);
+        console.error("Error completing order:", error);
       }
     }
   };
-
 
   return (
     <>
@@ -121,14 +127,20 @@ export default function OrderPayment() {
               </div>
               <div className="order-choices">
                 <button
-                  className={`cash-delivery-btn ${selectedPaymentMethod === 'Cash on Delivery' ? 'selected' : ''}`}
-                  onClick={() => handleSelectPaymentMethod('Cash on Delivery')}
+                  className={`cash-delivery-btn ${
+                    selectedPaymentMethod === "Cash on Delivery"
+                      ? "selected"
+                      : ""
+                  }`}
+                  onClick={() => handleSelectPaymentMethod("Cash on Delivery")}
                 >
                   Cash on Delivery
                 </button>
                 <button
-                  className={`online-payment-btn ${selectedPaymentMethod === 'GCash' ? 'selected' : ''}`}
-                  onClick={() => handleSelectPaymentMethod('GCash')}
+                  className={`online-payment-btn ${
+                    selectedPaymentMethod === "GCash" ? "selected" : ""
+                  }`}
+                  onClick={() => handleSelectPaymentMethod("GCash")}
                 >
                   GCash
                 </button>
@@ -136,18 +148,20 @@ export default function OrderPayment() {
               {selectedPaymentMethod && (
                 <div className="order-text-info">
                   <h2>Pay by {getPaymentValue()}</h2>
-                  <p>
-                    Double check your payments and you are good to go!
-                  </p>
+                  <p>Double check your payments and you are good to go!</p>
                 </div>
               )}
               <div className="finish-pay-ctn">
                 <p>
-                  By making this purchase you agree to our{' '}
-                  <span>Terms and Conditions</span>
+                  By making this purchase you agree to our{" "}
+                  <a href="/Terms">
+                    <span>Terms and Conditions</span>
+                  </a>
                 </p>
                 <Link to="/OrderReceipt">
-                  <button className="finish-pay" onClick={handleFinishAndPay}>Finish and Pay</button>
+                  <button className="finish-pay" onClick={handleFinishAndPay}>
+                    Finish and Pay
+                  </button>
                 </Link>
                 <p id="terms-and-condition">
                   Our policies and guidelines ensure a fair and transparent

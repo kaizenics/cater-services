@@ -1,30 +1,89 @@
-import AdminSidebar from '../components/AdminSidebar'
-import { BiPurchaseTagAlt } from 'react-icons/bi'
+import AdminSidebar from '../components/AdminSidebar';
+import { BiPurchaseTagAlt } from 'react-icons/bi';
 import { useState, useEffect } from 'react';
 import '../styles/UserMgt.scss';
 
 export default function UserMgt() {
   const [userPurchases, setUserPurchases] = useState([]);
 
-  useEffect(() => {
-    // Fetch user purchases data here and update the state
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost/serverside/usermgt/getUserPurchases.php');
-        const data = await response.json();
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost/serverside/usermgt/getUserPurchases.php');
+      const data = await response.json();
 
-        if (data.success) {
-          setUserPurchases(data.purchases || []);
-        } else {
-          console.error('Failed to fetch user purchases:', data.error);
-        }
-      } catch (error) {
-        console.error('Error fetching user purchases:', error);
+      if (data.success) {
+        setUserPurchases(data.purchases || []);
+      } else {
+        console.error('Failed to fetch user purchases:', data.error);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching user purchases:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, []); 
+
+  const handleRemoveOrderItem = async (invoiceNum) => {
+    const confirmation = window.confirm("Are you sure you want to remove this item? It also cancels the order when you remove the item. Proceed?");
+    if (!confirmation) {
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost/serverside/usermgt/removeItemOrder.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          invoiceNum: invoiceNum,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        console.log('Item removed successfully');
+        setUserPurchases((prevPurchases) => prevPurchases.filter((purchase) => purchase.invoiceNum !== invoiceNum));
+      } else {
+        console.error('Failed to remove item:', data.error);
+      }
+    } catch (error) {
+      console.error('Error removing item:', error);
+    }
+  };
+
+  const handleOrderDone = async (invoiceNum) => {
+    const confirmation = window.confirm("Are you sure the order is done?");
+    if (!confirmation) {
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost/serverside/usermgt/deductQuantities.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          invoiceNum: invoiceNum,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        console.log('Quantities deducted successfully');
+        // You can update the UI or take other actions if needed
+      } else {
+        console.error('Failed to deduct quantities:', data.error);
+      }
+    } catch (error) {
+      console.error('Error deducting quantities:', error);
+    }
+  };
 
   return (
     <>
@@ -46,7 +105,10 @@ export default function UserMgt() {
                 <h1>Ordered Item: <span>{purchase.orderedItem}</span></h1>
                 <h1>Date Issued: <span>{purchase.addDate}</span></h1>
                 <h1>Total Bill: <span>{purchase.totalbill} PHP</span></h1>
-                <p>Remove</p>
+                <div className="user-mgt-btn">
+                  <h1 onClick={() => handleOrderDone(purchase.invoiceNum)}>Order Done</h1>
+                  <h2 onClick={() => handleRemoveOrderItem(purchase.invoiceNum)}>Remove</h2>
+                </div>
               </div>
             ))}
           </div>
