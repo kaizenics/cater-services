@@ -13,9 +13,9 @@ export default function Help() {
 
   const faqData = [
     {
-      question: "What is your return policy?",
+      question: "How do I access the ordering system?",
       answer:
-        "Our return policy allows you to return items within 30 days of purchase. Please check our Returns and Exchanges page for more details.",
+        "'Ate Gang's Online Catering Website' through your web browser. Simply enter the website's URL in the address bar and press Enter. Once on the website, you can create an account or log in if you already have one to start using the ordering system.",
     },
     {
       question: "How do I track my order?",

@@ -12,10 +12,11 @@ import DishOrder from './pages/DishOrder'
 import Cart from './pages/Cart'
 import OrderPayment from './pages/OrderPayment';
 import OrderReceipt from './pages/OrderReceipt';
-import Help from './pages/Help'
+import Terms from './pages/Terms'
 import Profile from './pages/Profile'
 import UserMgt from './pages/UserMgt'
 import FAQ from './pages/FAQ'
+import CustomerCare from './pages/CustomerCare';
 import './App.scss';
 import Terms from './pages/Terms';
 
@@ -36,11 +37,15 @@ function App() {
       <Route path="/Cart" element={<Cart/>}/>
       <Route path="/OrderPayment" element={<OrderPayment/>}/>
       <Route path="/OrderReceipt" element={<OrderReceipt/>}/>
-      <Route path="/Help" element={<Help/>}/>
+      <Route path="/Terms" element={<Terms/>}/>
       <Route path="/Profile" element={<Profile/>}/>
       <Route path="/UserMgt" element={<UserMgt/>}/>
       <Route path="/FAQ" element={<FAQ/>}/>
+<<<<<<< Updated upstream
       <Route path="/Terms" element={<Terms/>}/>
+=======
+      <Route path="/CustomerCare" element={<CustomerCare/>}/>
+>>>>>>> Stashed changes
     </Routes>
    </>
   );

@@ -1,0 +1,155 @@
+@font-face {
+    font-family: Questrial;
+    src: url(../fonts/Questrial-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend-Medium;
+    src: url(../fonts/Lexend-Medium.ttf);
+  }
+  
+  @font-face {
+    font-family: Lexend-Bold;
+    src: url(../fonts/Lexend-Bold.ttf);
+  }
+
+
+
+    .logo-item{
+    margin: 0px 40px 0px 40px;
+        
+    }
+    
+    .overlay {
+
+    bottom: 0;
+    color: #b9052a;
+    display: flex;
+    align-items: center; // This will vertically align the icon and text
+    justify-content: flex-start;
+    font-family: Lexend-Bold;
+    font-size: 50px;
+
+    }
+
+    .box {
+        
+        width: 60vh;
+        height: 30vh;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: #b9052a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       margin: 20px 10px 10px 40px;
+
+    }
+
+    .box p{
+
+        font-family: Lexend-Medium;
+        color: #ffffff
+    }
+
+    .box h3{
+
+        font-family: Lexend-Bold;
+        color: #ffffff;
+        font-size: 50px;
+        text-align: center;
+
+    }
+
+    .boxes {
+        display: flex;
+        justify-content: center; // This will add space between the boxes
+        align-items: center;
+    }
+
+.logos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // This will center the logos horizontally
+    align-items: center;
+
+}
+
+.logo-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 4px solid #b9052a;
+    border-radius: 5px;
+    width: 700px;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+    box-sizing: border-box; // Add this line
+    font-family: Lexend-Medium;
+}
+
+.input-field, .submit-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b9052a;
+    border-radius: 5px;
+    box-sizing: border-box; // Add this line
+    font-family: Questrial;
+}
+
+.submit-button {
+    background-color:#b9052a; // Change this to the color you want
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+  
+.form-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 400px 10px 400px;
+}
+
+.form-container h1 {
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+    font-family: Lexend-Bold;
+    color: #b9052a;
+    font-size: 60px;
+    text-align: left;
+    
+}
+.form-container p {
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+    font-family: Lexend-Medium;
+    color: #b9052a;
+    font-size: 20px;
+    text-align: left;
+    
+}
+
+
