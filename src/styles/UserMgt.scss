@@ -49,8 +49,8 @@ $secColor: #89011c;
 
 .purchase-box {
   width: 100%;
-  height: 210px;
-  background-color: #d3ecff;
+  height: 230px;
+  background-color: #ffffff;
   border: 2px solid #dfdededc;
   border-radius: 14px;
   box-shadow: 0px 0px 10px 6px #dfdfdfd3;
@@ -70,13 +70,27 @@ $secColor: #89011c;
     font-size: 15px;
 }
 
+.purchase-box h2 {
+  margin: 18px 20px 0px 20px;
+  font-family: Lexend-Medium;
+  font-size: 15px;
+}
+
+.status-not-delivered {
+  color: $mainColor
+}
+
+.status-delivered {
+  color: #6EBA70;
+}
+
 .user-mgt-btn {
   display: flex;
 
   h1 {
     margin: 40px 20px 0px 20px;
     font-size: 15px;
-    color: #8DDC86;
+    color: #198BA3;
     text-decoration: underline;
     cursor: pointer;
   }
@@ -88,16 +102,4 @@ $secColor: #89011c;
     text-decoration: underline;
     cursor: pointer;
   }
-}
-
-/* Add these styles to your CSS file */
-.purchase-box.order-done,
-.profile-info-box.order-done {
-  background-color: #4caf50; /* Green background color */
-  color: white;
-}
-
-.order-done-btn {
-  background-color: #4caf50;
-  color: white;
 }

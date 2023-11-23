@@ -180,6 +180,19 @@ export default function Profile() {
                     <h1>
                       Total Bill: <span>{order.totalbill} PHP</span>
                     </h1>
+                    <h2>
+                  Status:{" "}
+                  <span
+                    className={
+                      order.status === "Not yet Delivered"
+                        ? "status-not-delivered"
+                        : "status-delivered"
+                    }
+                  >
+                    {order.status}
+                  </span>
+                </h2>
+
                     <div className="profile-line-btn">
                     <p onClick={() => handleCancelOrder(order.invoiceNum)}>Cancel Order</p>
                     <p onClick={() => handleRemoveItem(order.invoiceNum)}>Remove Item</p>
