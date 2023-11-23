@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import "../styles/Footer.scss";
 
 export default function Signup() {
+  
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
@@ -18,12 +19,19 @@ export default function Signup() {
     const [clicked, setClicked] = useState(false);
 
     async function SignUpHandler() {
-      if (email === '' || password === ''|| confirmPassword === '') {
-        alert('Please Input Email and Password to Proceed')
-      } else if (firstName === "" || lastName === "" || address === "" || mobileNum === "") {
-        alert("Please Fill the Blanks to Continue")
-      } else if (password != confirmPassword) {
-        alert("Password do not match")
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+      } else if (password.length < 6) {
+        alert('Password must be at least 6 characters long.');
+      } else if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+      } else if (firstName === '' || lastName === '' || address === '' || mobileNum === '') {
+        alert('Please fill in all the fields.');
+      } else if (mobileNum ==! 11) {
+        alert('Mobile number must be 11 digits long.');
       } else {
         try {
           var headers = {
