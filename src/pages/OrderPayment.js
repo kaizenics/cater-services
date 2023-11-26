@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import HomeNav from "../components/HomeNav";
 import { MdOutlinePayments } from "react-icons/md";
 import "../styles/OrderPayment.scss";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function OrderPayment() {
+  const navigate = useNavigate();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
   const [totalBill, setTotalBill] = useState(0);
@@ -89,6 +92,36 @@ export default function OrderPayment() {
         if (data.success) {
           console.log("Order completed successfully");
 
+          const loadingToastId = toast.info('Processing your order...', {
+            position: "top-center",
+            autoClose: 2500,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+          });
+    
+          setTimeout(() => {
+            toast.dismiss(loadingToastId);
+  
+            toast.success('Your order is confirmed!', {
+              position: "top-center",
+              autoClose: 2500,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: false,
+              progress: undefined,
+              theme: "light",
+            });
+    
+            setTimeout(() => {
+              navigate('/OrderReceipt');
+            }, 5000);
+          }, 3500);
+
           const orderDetailsResponse = await fetch(
             `http://localhost/serverside/orders/getOrderDetails.php?cart_id=${cartId}`
           );
@@ -113,10 +146,18 @@ export default function OrderPayment() {
     }
   };
 
+  useEffect(() => {
+    document.title = "Payment | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   return (
     <>
+    <ToastContainer/>
       <HomeNav />
-
       <section className="order-receipt-body">
         <div className="order-receipt-container">
           <div className="order-info">
@@ -158,11 +199,9 @@ export default function OrderPayment() {
                     <span>Terms and Conditions</span>
                   </a>
                 </p>
-                <Link to="/OrderReceipt">
                   <button className="finish-pay" onClick={handleFinishAndPay}>
                     Finish and Pay
                   </button>
-                </Link>
                 <p id="terms-and-condition">
                   Our policies and guidelines ensure a fair and transparent
                   interaction between users and our platform. By using our

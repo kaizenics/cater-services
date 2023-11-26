@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/Footer.scss";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Signup() {
   
@@ -17,21 +19,66 @@ export default function Signup() {
     const [confirmPassword, setConfirmPassword] = useState();
     const [error, setError] = useState();
     const [clicked, setClicked] = useState(false);
-
+    
     async function SignUpHandler() {
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
+        toast.warn('Please enter a valid email address', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       } else if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
+        toast.warn('Password must be at least 6 characters long', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       } else if (password !== confirmPassword) {
-        alert('Passwords do not match.');
+        toast.warn('Password do not match', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       } else if (firstName === '' || lastName === '' || address === '' || mobileNum === '') {
-        alert('Please fill in all the fields.');
+        toast.error('Please fill in all the fields', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       } else if (mobileNum ==! 11) {
-        alert('Mobile number must be 11 digits long.');
+        toast.warn('Mobile number must be 11 digits long', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       } else {
         try {
           var headers = {
@@ -57,10 +104,30 @@ export default function Signup() {
           .then(response => {
             console.log(response);
             if (response[0].Message === "Successfully Registered!") {
-              alert('Success! Please Login again to proceed');
-              navigate('/Login');
+              toast.promise(
+                new Promise((resolve) => {
+                  toast.success('Successfully Signed up. Proceeding to Login page', {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "light",
+                  });
+        
+                  setTimeout(() => {
+                    resolve();
+                    navigate('/Login');
+                  }, 3500);
+                }),
+              ); 
+              
+              
             } else {
               setError(response[0].Message);
+
             }
           }).catch(error => {
             console.log(error)
@@ -75,8 +142,17 @@ export default function Signup() {
     setClicked(true);
   }
 
+  useEffect(() => {
+    document.title = "Sign Up | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   return (
     <>
+    <ToastContainer/>
       <Navbar />
       <section className="login-page">
         <div className="box-container-1">
@@ -170,9 +246,7 @@ export default function Signup() {
             </button>
             <h5>
               Already have an account?{" "}
-              <Link to="/Signup" className="direct-auth">
-                Login
-              </Link>
+              <a href="/Login" className="direct-auth">Login</a>
             </h5>
           </div>
         </div>

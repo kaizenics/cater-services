@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/Auth.scss";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Login() {
   const navigate = useNavigate();
@@ -49,14 +51,6 @@ export default function Login() {
           window.localStorage.setItem('firstname', response.firstNameId);
           window.localStorage.setItem('accountId', response.UserId);
 
-          if (response.Role === 'admin') {
-            alert('Navigating to Admin Panel');
-            navigate('/AdminPanel');
-          } else {
-            alert('You have been Logged in!');
-            navigate('/Home');
-          }
-
           const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
           const accountId = response.UserId;
 
@@ -73,20 +67,80 @@ export default function Login() {
               }),
             });
           }
-          
-          localStorage.setItem('cartItemCount', cartItems.length);
 
+          const loadingToastId = toast.info('Logging in...', {
+            position: "top-center",
+            autoClose: 2500,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+          });
+    
+          setTimeout(() => {
+            toast.dismiss(loadingToastId);
+  
+            toast.success('Logged in successfully!', {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: false,
+              progress: undefined,
+              theme: "light",
+            });
+    
+            setTimeout(() => {
+              navigate('/Home');
+            }, 5500);
+          }, 3500);
+
+          localStorage.setItem('cartItemCount', cartItems.length);
+          
         } else if (response.Message === 'Incorrect Email') {
-          alert('Incorrect Email');
           setEmailError(true);
           setPasswordError(false);
+
+          toast.error('Email address is Incorrect!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+            
         } else if (response.Message === 'Incorrect Password') {
-          alert('Incorrect Password');
           setEmailError(true);
           setPasswordError(false);
+
+          toast.error('Password is Incorrect!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         } else {
-          alert('Invalid or missing input data!');
           setError(response.Message);
+          toast.error('Invalid or missing input data', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         }
       } catch (err) {
         console.log(err);
@@ -94,16 +148,32 @@ export default function Login() {
     }
   }
 
+  useEffect(() => {
+    document.title = "Login | Ate Gang's Catering Services";
+
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   function handleLoginClick() {
     setClicked(true);
   }
 
   function handleLoginClick() {
     setClicked(true);
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      handleLoginClick();
+      LoginHandler(email, password);
+    }
   }
 
   return (
     <>
+    
       <Navbar />
       <section className="login-page">
         <div className="box-container">
@@ -118,6 +188,7 @@ export default function Login() {
               placeholder="" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={handleKeyPress}
               />
               <label for="email">Email</label>
             </div>
@@ -129,6 +200,7 @@ export default function Login() {
                 placeholder=""
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleKeyPress}
               />
               <label for="">Password</label>
             </div>
@@ -141,6 +213,7 @@ export default function Login() {
             >
               Login
             </button>
+            <ToastContainer/>
         <h5>
               <Link to="/AdminLogin" className="admin-login-btn">
               Admin Login
@@ -148,9 +221,7 @@ export default function Login() {
             </h5>
             <h5>
               Don't have an account?{" "}
-              <Link to="/Signup" className="direct-auth">
-                Get Started
-              </Link>
+              <a href="/Signup" className="direct-auth">Get Started</a>
             </h5>
             
           </div>
