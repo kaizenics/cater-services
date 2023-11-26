@@ -27,7 +27,7 @@ $secColor: #89011c;
 
 .profile-text h1 {
   font-size: 40px;
-  margin: 30px 0px 0px 10px;
+  margin: 30px 15px 0px 10px;
   font-family: Lexend-Medium;
 }
 
@@ -108,3 +108,37 @@ $secColor: #89011c;
   gap: 20px;
 }
 
+.edit-profile {
+  color: $mainColor;
+  margin: 40px 0px 20px 0px;
+  padding: 5px 14px;
+  background-color: transparent;
+  opacity: 1;
+  text-align: center;
+  border: 2px solid $mainColor;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.edit-profile:hover {
+  color: #fff;
+  background-color: $mainColor;
+}
+
+.save-profile {
+  color: #6EBA70;
+  margin: 40px 0px 20px 0px;
+  padding: 5px 14px;
+  background-color: transparent;
+  opacity: 1;
+  text-align: center;
+  border: 2px solid #6EBA70;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: Lexend-Medium;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}

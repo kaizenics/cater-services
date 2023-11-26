@@ -1,10 +1,13 @@
 import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
+import EditProfileModal from "../components/EditModalInfo";
 import "../styles/Profile.scss";
 import { useState, useEffect } from "react";
 import { BiUser } from "react-icons/bi";
 
 export default function Profile() {
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [orderDetails, setOrderDetails] = useState([]);
   const [userInfo, setUserInfo] = useState({
     firstName: "",
@@ -135,6 +138,52 @@ export default function Profile() {
     return result;
   };
 
+  const handleEditProfile = () => {
+    setIsEditMode(true);
+    setModalIsOpen(true);
+  };
+
+  const handleSaveProfile = async () => {
+    setIsEditMode(false);
+    setModalIsOpen(false);
+
+    try {
+      const response = await fetch('http://localhost/serverside/auth/updateProfileInfo.php', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          account_id: window.localStorage.getItem("accountId"),
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          mobileNum: userInfo.mobileNum,
+          address: userInfo.address,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        console.log('User details updated successfully');
+        alert("Profile Details Saved!")
+        window.location.href = '/Profile';
+      } else {
+        console.error('Failed to update user details:', data.error);
+      }
+    } catch (error) {
+      console.error('Error updating user details:', error);
+    }
+  };
+
+  useEffect(() => {
+    document.title = "Profile | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   return (
     <>
       <HomeNav />
@@ -144,6 +193,12 @@ export default function Profile() {
           <div className="profile-text">
             <BiUser className="profile-user-icon" />
             <h1>Profile</h1>
+            <button
+              className={isEditMode ? "save-profile" : "edit-profile"}
+              onClick={isEditMode ? handleSaveProfile : handleEditProfile}
+            >
+              {isEditMode ? "Save Profile" : "Edit Profile"}
+            </button>
           </div>
           <div className="profile-info">
             <h1>{`${userInfo.firstName} ${userInfo.lastName}`}</h1>
@@ -174,7 +229,7 @@ export default function Profile() {
                           : "No items"}
                       </span>
                     </h1>
-                    <h1>
+                    <h1>   
                       Date Issued: <span>{order.addDate}</span>
                     </h1>
                     <h1>
@@ -205,7 +260,15 @@ export default function Profile() {
             
           </div>
         </div>
+        
       </section>
+      <EditProfileModal
+        isOpen={modalIsOpen}
+        onClose={() => setModalIsOpen(false)}
+        onSave={handleSaveProfile}
+        userData={userInfo}
+        setUserData={setUserInfo}
+      />
       <Footer />
     </>
   );
