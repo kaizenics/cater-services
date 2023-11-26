@@ -4,6 +4,8 @@ import "../styles/DishOrder.scss";
 import { Link } from "react-router-dom";
 import { MdExpandMore } from "react-icons/md";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function DishOrder() {
   const [quantity, setQuantity] = useState(1);
@@ -43,7 +45,16 @@ export default function DishOrder() {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     setCartItemCount((prevCount) => prevCount + 1);
   
-    alert('Item added to cart!');
+    toast.success('Item added to cart!', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+      });
 
     fetch("http://localhost/serverside/cart/addCartItems.php", {
       method: "POST",
@@ -98,6 +109,7 @@ export default function DishOrder() {
 
   return (
     <>
+    <ToastContainer/>
       <HomeNav />
       <section className="dish-order-body">
         <div className="dish-order-container">

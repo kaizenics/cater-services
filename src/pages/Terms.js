@@ -2,8 +2,18 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/Terms.scss";
+import { useEffect } from 'react'
 
 const Terms = () => {
+
+  useEffect(() => {
+    document.title = "Terms and Conditions | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   return (
     <div>
       <Navbar />

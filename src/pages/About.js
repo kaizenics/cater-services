@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import img2 from "../images/ategangsred.png";
@@ -5,6 +6,15 @@ import img3 from "../images/locationpic.png";
 import '../styles/About.scss';
 
 export default function About() {
+
+  useEffect(() => {
+    document.title = "About Us | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+  
     return (
         <>
             <Navbar />

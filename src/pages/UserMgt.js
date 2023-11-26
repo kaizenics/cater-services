@@ -98,6 +98,14 @@ export default function UserMgt() {
     }
   };
 
+  useEffect(() => {
+    document.title = "Orders | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   return (
     <>
       <div className="user-container">
@@ -106,7 +114,7 @@ export default function UserMgt() {
           <div className="user-mgt-container">
             <div className="user-mgt-text">
               <BiPurchaseTagAlt className="purchase-tag" />
-              <h1>Purchases</h1>
+              <h1>Orders</h1>
             </div>
           </div>
           <div className="purchase-history-ctn">

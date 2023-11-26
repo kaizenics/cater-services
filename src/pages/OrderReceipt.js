@@ -25,6 +25,14 @@ export default function OrderReceipt() {
     }
   }, []);
 
+  useEffect(() => {
+    document.title = "Receipt | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   return (
     <>
       <HomeNav />

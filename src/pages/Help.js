@@ -2,7 +2,7 @@ import HomeNav from '../components/HomeNav'
 import Footer from "../components/Footer";
 import "../styles/Help.scss";
 import { RiQuestionnaireLine } from "react-icons/ri";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Help() {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -10,6 +10,14 @@ export default function Help() {
   const handleAccordionClick = (index) => {
     setActiveAccordion(index === activeAccordion ? null : index);
   };
+
+  useEffect(() => {
+    document.title = "FAQ | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
 
   const faqData = [
     {

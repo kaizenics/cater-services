@@ -98,6 +98,14 @@ export default function Cart() {
       .catch((error) => console.error("Error:", error));
   };
 
+  useEffect(() => {
+    document.title = "Cart | Ate Gang's Catering Services";
+  
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, []);
+
   return (
     <>
       <HomeNav />

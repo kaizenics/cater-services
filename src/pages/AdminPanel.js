@@ -37,6 +37,14 @@ export default function Admin() {
       .catch((error) => console.error("Error:", error));
  }, [])
 
+ useEffect(() => {
+  document.title = "Dashboard | Ate Gang's Catering Services";
+
+  return () => {
+    document.title = "Ate Gang's Catering Services";
+  };
+}, []);
+
   return (
     <>
       <div className="dashboard-container">

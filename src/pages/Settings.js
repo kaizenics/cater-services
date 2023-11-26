@@ -2,6 +2,7 @@ import AdminSidebar from '../components/AdminSidebar'
 import { useNavigate } from 'react-router-dom';
 import { BsGear } from 'react-icons/bs'
 import '../styles/Settings.scss'
+import { useEffect } from 'react' 
 
 export default function Settings() {
     const navigate = useNavigate();
@@ -17,6 +18,15 @@ export default function Settings() {
           navigate("/");
         }
       };
+
+      useEffect(() => {
+        document.title = "Settings | Ate Gang's Catering Services";
+      
+        return () => {
+          document.title = "Ate Gang's Catering Services";
+        };
+      }, []);
+
     return (
         <>
         <div className="settings-ctn">

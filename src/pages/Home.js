@@ -13,18 +13,25 @@ export default function Home() {
   const expandItemsRef = useRef(null);
 
   useEffect(() => {
-   fetch("http://localhost/serverside/items/getItem.php")
-       .then((response) => response.json())
-       .then((data) => setDish(data))
-       .catch((error) => console.error("Error:", error));
-  }, [])
+    fetch("http://localhost/serverside/items/getItem.php")
+      .then((response) => response.json())
+      .then((data) => {
+        setDish(data);
+        document.title = searched ? "Searched Dishes | Ate Gang's Catering Services" : "Home | Ate Gang's Catering Services";
+      })
+      .catch((error) => console.error("Error:", error));
+
+    return () => {
+      document.title = "Ate Gang's Catering Services";
+    };
+  }, [searched]); 
 
   const handleSearch = () => {
     if (!searchQuery.trim()) {
       alert("Please enter a search query");
       return;
     }
-  
+
     const filteredDishes = dish.filter(
       (item) =>
         item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -34,7 +41,7 @@ export default function Home() {
     if (expandItemsRef.current && searched) {
       expandItemsRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
   
   return (
     <>
