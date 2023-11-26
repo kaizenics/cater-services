@@ -18,6 +18,7 @@ import UserMgt from './pages/UserMgt'
 import FAQ from './pages/FAQ'
 import AdminLogin from './pages/AdminLogin'
 import Terms from './pages/Terms'
+import CustomerCare from './pages/CustomerCare'
 import './App.scss';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
       <Route path="/FAQ" element={<FAQ/>}/>
       <Route path="/AdminLogin" element={<AdminLogin/>}/>
       <Route path="/Terms" element={<Terms/>}/>
+      <Route path="/CustomerCare" element={<CustomerCare/>}/>
     </Routes>
    </>
   );
