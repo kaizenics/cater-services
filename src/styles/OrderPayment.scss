@@ -114,11 +114,11 @@ $secColor: #89011c;
 
 .online-payment-btn.selected {
   color: #fff;
-  background-color: #054cd1; 
+  background-color: #054cd1;
 }
 
 .finish-pay-ctn {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .finish-pay-ctn p {
@@ -178,7 +178,6 @@ $secColor: #89011c;
   display: flex;
   justify-content: space-between;
   margin: 0px 22px;
-  
 }
 
 .order-sub-total p {
@@ -211,4 +210,25 @@ $secColor: #89011c;
 
 .orders-total {
   margin-top: 100px;
+}
+
+
+.special-note-ctn {
+  max-width: 725px;
+}
+.special-note-ctn h1 {
+    font-family: Lexend-Medium;
+}
+
+.special-note {
+  width: 725px;
+  height: 150px;
+  resize: none;
+  font-size: 25px;
+  font-family: Questrial;
+  border-radius: 5px;
+}
+
+.special-note:focus, .special-note:active {
+  outline-color: #3f3f3f;
 }

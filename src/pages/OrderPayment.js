@@ -11,6 +11,7 @@ export default function OrderPayment() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
   const [totalBill, setTotalBill] = useState(0);
+  const [specialNote, setSpecialNote] = useState("");
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("selectedItems")) || [];
@@ -72,6 +73,20 @@ export default function OrderPayment() {
   const handleFinishAndPay = async () => {
     const cartId = selectedItems.length > 0 ? selectedItems[0].cart_id : null;
 
+    if (!selectedPaymentMethod) {
+      toast.warn('Please select a payment method before finishing and paying.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+      return;
+    }
+  
     if (cartId) {
       try {
         const response = await fetch(
@@ -83,6 +98,7 @@ export default function OrderPayment() {
             },
             body: JSON.stringify({
               cart_id: cartId,
+              note: specialNote,
             }),
           }
         );
@@ -192,6 +208,12 @@ export default function OrderPayment() {
                   <p>Double check your payments and you are good to go!</p>
                 </div>
               )}
+              <div className="special-note-ctn">
+                <h1>Special Note:</h1>
+                <textarea 
+                className="special-note"
+                onChange={(e) => setSpecialNote(e.target.value)} />
+              </div>
               <div className="finish-pay-ctn">
                 <p>
                   By making this purchase you agree to our{" "}

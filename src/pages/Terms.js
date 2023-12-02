@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
 import "../styles/Terms.scss";
 import { useEffect } from 'react'
@@ -16,7 +16,7 @@ const Terms = () => {
 
   return (
     <div>
-      <Navbar />
+      <HomeNav />
 
       <section>
         <div className="terms">

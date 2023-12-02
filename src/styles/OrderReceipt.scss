@@ -17,7 +17,7 @@ $mainColor: #b9052a;
 $secColor: #89011c;
 
 .order-receipt-text {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .order-receipt-text h1 {
   text-align: center;
@@ -63,7 +63,7 @@ $secColor: #89011c;
 
 .receipt-box {
   width: 900px;
-  height: 350px;
+  min-height: 350px;
   background-color: #ffffff54;
   border: 2px solid #dfdededc;
   border-radius: 14px;
@@ -73,7 +73,7 @@ $secColor: #89011c;
 }
 
 .receipt-box h1 {
-    margin: 30px 0px 0px 40px;
+    margin: 30px 40px 0px 40px;
     font-size: 25px;
     font-family: Lexend-Medium;
 }

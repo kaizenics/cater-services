@@ -141,6 +141,9 @@ export default function UserMgt() {
                 <h1>
                   Total Bill: <span>{purchase.totalbill} PHP</span>
                 </h1>
+                <h1>
+                  Special Note: <span>{purchase.note || "N/A"}</span>
+                </h1>
                 <h2>
                   Status:{" "}
                   <span

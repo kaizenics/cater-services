@@ -77,6 +77,9 @@ export default function OrderReceipt() {
                   Payment Method: <span>{orderDetails.payment_method}</span>
                 </h1>
                 <h1>
+                  Special Note: <span>{orderDetails.note || "N/A"}</span>
+                </h1>
+                <h1>
                   Total Bill: <span>{orderDetails.totalbill} PHP</span>
                 </h1>
               </div>

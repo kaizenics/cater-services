@@ -63,7 +63,7 @@ export default function AdminLogin() {
   
             toast.success('Navigating to Admin Panel', {
               position: "top-center",
-              autoClose: 3000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: false,
               pauseOnHover: false,
@@ -74,8 +74,8 @@ export default function AdminLogin() {
     
             setTimeout(() => {
               navigate('/AdminPanel');
-            }, 5500);
-          }, 3500);
+            }, 4500);
+          }, 3000);
 
         } else if (response.Message === 'Incorrect Email') {
           setEmailError(true);

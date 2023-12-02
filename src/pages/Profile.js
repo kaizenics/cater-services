@@ -235,6 +235,9 @@ export default function Profile() {
                     <h1>
                       Total Bill: <span>{order.totalbill} PHP</span>
                     </h1>
+                    <h1>
+                      Special Note: <span>{order.note || "N/A"}</span>
+                    </h1>
                     <h2>
                   Status:{" "}
                   <span

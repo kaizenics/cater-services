@@ -84,7 +84,7 @@ export default function Login() {
   
             toast.success('Logged in successfully!', {
               position: "top-center",
-              autoClose: 3000,
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: false,
               pauseOnHover: false,
@@ -95,8 +95,8 @@ export default function Login() {
     
             setTimeout(() => {
               navigate('/Home');
-            }, 5500);
-          }, 3500);
+            }, 4500);
+          }, 3000);
 
           localStorage.setItem('cartItemCount', cartItems.length);
           
