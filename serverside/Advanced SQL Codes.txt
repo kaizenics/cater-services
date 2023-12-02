@@ -1,0 +1,406 @@
+WORKING STORED PROCEDURES, FUNCTIONS, TRIGGER CODES
+
+addPayment.php / UpdateTotalBill
+
+DELIMITER $$
+
+CREATE PROCEDURE UpdateTotalBill (IN cartID INT)
+BEGIN
+    DECLARE total DECIMAL(10,2);
+    
+    SELECT SUM(price * quantity) INTO total
+    FROM cartitems
+    WHERE cart_id = cartID;
+    
+    UPDATE payment
+    SET totalbill = total
+    WHERE cart_id = cartID;
+END $$
+
+DELIMITER ;
+
+CALL UpdateTotalBill(cart_id);
+
+
+-----
+addPayment.php / AddPaymentAndUpdateTotalBill
+
+DELIMITER //
+CREATE PROCEDURE AddPaymentAndUpdateTotalBill(
+    IN p_cart_id INT,
+    IN p_itemName VARCHAR(255),
+    IN p_price DECIMAL(10, 2),
+    IN p_quantity INT
+)
+BEGIN
+    DECLARE total_price DECIMAL(10, 2);
+    
+    DECLARE payment_exists INT DEFAULT 0;
+    SELECT COUNT(*) INTO payment_exists
+    FROM payment
+    WHERE cart_id = p_cart_id;
+
+    IF payment_exists > 0 THEN
+ 
+        UPDATE payment
+        SET totalbill = totalbill + (p_price * p_quantity)
+        WHERE cart_id = p_cart_id;
+    ELSE
+ 
+        INSERT INTO payment (cart_id, payment_method, totalbill)
+        VALUES (p_cart_id, 'your_payment_method_here', (p_price * p_quantity));
+    END IF;
+
+    SELECT SUM(price * quantity) INTO total_price
+    FROM cartitems
+    WHERE cart_id = p_cart_id;
+    
+    UPDATE payment
+    SET totalbill = total_price
+    WHERE cart_id = p_cart_id;
+END //
+DELIMITER ;
+
+---------------------------------------
+
+userDetails.php / Profile.js
+
+DELIMITER //
+CREATE PROCEDURE GetUserDetails(IN p_account_id INT)
+BEGIN
+    SELECT
+        account_id,
+        firstname AS firstName,
+        lastname AS lastName,
+        mobilenum AS mobileNum,
+        address
+    FROM accounts
+    WHERE account_id = p_account_id;
+END //
+DELIMITER ;
+
+-----------------------------------
+
+addCartItems.php / DishOrder.js
+
+DELIMITER //
+CREATE FUNCTION AddToCart(
+    p_account_id INT,
+    p_imageUrl VARCHAR(255),
+    p_itemName VARCHAR(255),
+    p_description TEXT,
+    p_price DECIMAL(10, 2),
+    p_quantity INT
+)
+RETURNS VARCHAR(255)
+BEGIN
+    DECLARE message VARCHAR(255);
+
+    INSERT INTO cartitems (account_id, imageUrl, itemName, description, price, quantity)
+    VALUES (p_account_id, p_imageUrl, p_itemName, p_description, p_price, p_quantity);
+
+    IF ROW_COUNT() > 0 THEN
+        SET message = 'Item added to cart';
+    ELSE
+        SET message = 'Error adding item to cart';
+    END IF;
+
+    RETURN message;
+END //
+DELIMITER ;
+
+--------------------------
+
+updateItem.php
+
+DELIMITER //
+CREATE PROCEDURE UpdateItem(
+    IN p_id INT,
+    IN p_itemName VARCHAR(255),
+    IN p_price DECIMAL(10, 2),
+    IN p_description TEXT,
+    IN p_qty INT
+)
+BEGIN
+    UPDATE items
+    SET
+        itemName = p_itemName,
+        price = p_price,
+        description = p_description,
+        qty = p_qty
+    WHERE item_id = p_id;
+END //
+DELIMITER ;
+
+---------------------------
+
+
+
+--------
+
+getOrderDetails.php
+
+DELIMITER //
+CREATE PROCEDURE GetPaymentDetails(IN p_cart_id INT)
+BEGIN
+    SELECT totalbill FROM payment WHERE cart_id = p_cart_id;
+END //
+DELIMITER ;
+
+---------
+
+updatePaymentMethod.php
+
+DELIMITER //
+
+CREATE PROCEDURE UpdatePaymentMethod(IN p_cartId INT, IN p_paymentMethod VARCHAR(255))
+BEGIN
+    DECLARE paymentRecordCount INT;
+
+    -- Check if the payment record already exists for the cart
+    SELECT COUNT(*) INTO paymentRecordCount FROM payment WHERE cart_id = p_cartId;
+
+    IF paymentRecordCount > 0 THEN
+        -- If the payment record exists, update the payment method
+        UPDATE payment SET payment_method = p_paymentMethod WHERE cart_id = p_cartId;
+    ELSE
+        -- If the payment record does not exist, insert a new record
+        INSERT INTO payment (cart_id, payment_method) VALUES (p_cartId, p_paymentMethod);
+    END IF;
+
+    SELECT 'success' AS result;
+
+END //
+
+DELIMITER ;
+
+
+--------
+
+insertOrder.php
+
+DELIMITER //
+
+CREATE PROCEDURE ProcessOrder(IN cartId INT)
+BEGIN
+    DECLARE invoiceNum INT;
+    DECLARE addDate DATE;
+
+    -- Generate random invoice number
+    SET invoiceNum = FLOOR(100000 + RAND() * 900000);
+    SET addDate = CURDATE();
+
+    -- Stored procedure to deduct quantity and insert into orders
+    INSERT INTO orders (account_id, payment_id, cart_id, invoicenum, addDate)
+    SELECT ci.account_id, p.payment_id, ci.cart_id, invoiceNum, addDate
+    FROM cartitems ci
+    JOIN payment p ON p.cart_id = ci.cart_id
+    WHERE ci.cart_id = cartId
+    AND ci.cart_id NOT IN (SELECT DISTINCT cart_id FROM orders);
+
+END //
+
+DELIMITER ;
+
+--------------------
+
+getOrderDetails.php
+
+DELIMITER //
+CREATE PROCEDURE GetOrderDetails(IN cartId INT)
+BEGIN
+    DECLARE invoiceNum INT;
+    DECLARE addDate DATE;
+    DECLARE firstname VARCHAR(255);
+    DECLARE lastname VARCHAR(255);
+    DECLARE address VARCHAR(255);
+    DECLARE payment_method VARCHAR(255);
+    DECLARE totalbill DECIMAL(10, 2);
+    DECLARE itemName VARCHAR(255);
+    DECLARE quantity INT;
+
+    SELECT o.invoiceNum, o.addDate, a.firstname, a.lastname, a.address, p.payment_method, p.totalbill, ci.itemName, ci.quantity
+    INTO invoiceNum, addDate, firstname, lastname, address, payment_method, totalbill, itemName, quantity
+    FROM orders o
+    JOIN accounts a ON o.account_id = a.account_id
+    JOIN payment p ON o.payment_id = p.payment_id
+    JOIN cartitems ci ON o.cart_id = ci.cart_id
+    WHERE o.cart_id = cartId;
+
+    IF invoiceNum IS NOT NULL THEN
+        SELECT JSON_OBJECT(
+            'invoiceNum', invoiceNum,
+            'addDate', addDate,
+            'firstname', firstname,
+            'lastname', lastname,
+            'address', address,
+            'payment_method', payment_method,
+            'totalbill', totalbill,
+            'items', JSON_ARRAY(
+                JSON_OBJECT(
+                    'itemName', itemName,
+                    'quantity', quantity
+                )
+            )
+        ) AS orderDetails;
+    ELSE
+        SELECT JSON_OBJECT('error', 'Invalid cart ID') AS orderDetails;
+    END IF;
+END //
+DELIMITER ;
+
+-------------------------------------
+
+ProcessOrder / inserOrder.php VERSION 2
+
+CREATE PROCEDURE ProcessOrder(IN cartId INT)
+BEGIN
+    DECLARE invoiceNum INT;
+    DECLARE addDate DATE;
+
+    -- Generate random invoice number
+    SET invoiceNum = FLOOR(100000 + RAND() * 900000);
+    SET addDate = CURDATE();
+
+    -- Stored procedure to deduct quantity and insert into orders
+    INSERT INTO orders (account_id, payment_id, cart_id, invoicenum, addDate)
+    SELECT ci.account_id, p.payment_id, ci.cart_id, invoiceNum, addDate
+    FROM cartitems ci
+    JOIN payment p ON p.cart_id = ci.cart_id
+    WHERE ci.cart_id = cartId
+    AND ci.cart_id NOT IN (SELECT DISTINCT cart_id FROM orders);
+
+    -- Insert into ordereditems
+INSERT INTO ordereditems (account_id, payment_id, cart_id, firstname, lastname, address, invoicenum, addDate, itemName, payment_method, qnty, totalbill)
+SELECT
+    o.account_id,
+    p.payment_id,
+    o.cart_id,
+    a.firstname,
+    a.lastname,
+    a.address,
+    o.invoiceNum,
+    o.addDate,
+    ci.itemName,
+    p.payment_method,
+    ci.quantity, 
+    p.totalbill
+FROM
+    orders o
+JOIN cartitems ci ON o.cart_id = ci.cart_id
+JOIN payment p ON p.cart_id = ci.cart_id
+JOIN accounts a ON a.account_id = o.account_id
+WHERE
+    o.cart_id = cartId
+    AND o.cart_id NOT IN (SELECT DISTINCT cart_id FROM ordereditems);
+
+END
+
+-----------------------
+
+TRIGGERS 
+
+insertOrder.php (UPDATED)
+
+CREATE TRIGGER before_insert_orders
+BEFORE INSERT ON orders
+FOR EACH ROW
+SET NEW.invoicenum = FLOOR(100000 + RAND() * 900000);
+
+
+---------------------
+
+InsertOrder / ProcessOrder [V3]
+
+-- ProcessOrder
+CREATE PROCEDURE ProcessOrder(IN cartId INT, IN specialNote TEXT)
+BEGIN
+    DECLARE invoiceNum INT;
+    DECLARE addDate DATE;
+
+    -- Generate random invoice number
+    SET invoiceNum = FLOOR(100000 + RAND() * 900000);
+    SET addDate = CURDATE();
+
+    -- Stored procedure to deduct quantity and insert into orders
+    INSERT INTO orders (account_id, payment_id, cart_id, invoicenum, addDate, note, status)
+    SELECT ci.account_id, p.payment_id, ci.cart_id, invoiceNum, addDate, 
+           CASE WHEN specialNote = '' THEN 'N/A' ELSE specialNote END, 'Not yet Delivered'
+    FROM cartitems ci
+    JOIN payment p ON p.cart_id = ci.cart_id
+    WHERE ci.cart_id = cartId
+    AND ci.cart_id NOT IN (SELECT DISTINCT cart_id FROM orders);
+
+    -- Insert into ordereditems
+    INSERT INTO ordereditems (account_id, payment_id, cart_id, firstname, lastname, address, invoicenum, addDate, itemName, payment_method, qnty, totalbill, note, status)
+    SELECT
+        o.account_id,
+        p.payment_id,
+        o.cart_id,
+        a.firstname,
+        a.lastname,
+        a.address,
+        o.invoiceNum,
+        o.addDate,
+        ci.itemName,
+        p.payment_method,
+        ci.quantity, 
+        p.totalbill,
+        CASE WHEN specialNote = '' THEN 'N/A' ELSE specialNote END,
+        'Not yet Delivered'
+    FROM
+        orders o
+    JOIN cartitems ci ON o.cart_id = ci.cart_id
+    JOIN payment p ON p.cart_id = ci.cart_id
+    JOIN accounts a ON a.account_id = o.account_id
+    WHERE
+        o.cart_id = cartId
+        AND o.cart_id NOT IN (SELECT DISTINCT cart_id FROM ordereditems);
+END
+
+-----------------------
+
+GetOrderDetails [NEW]
+
+BEGIN
+    DECLARE invoiceNum INT;
+    DECLARE addDate DATE;
+    DECLARE firstname VARCHAR(255);
+    DECLARE lastname VARCHAR(255);
+    DECLARE address VARCHAR(255);
+    DECLARE payment_method VARCHAR(255);
+    DECLARE totalbill DECIMAL(10, 2);
+    DECLARE itemName VARCHAR(255);
+    DECLARE quantity INT;
+    DECLARE note TEXT;  -- Add this line for the special note
+
+    SELECT o.invoiceNum, o.addDate, a.firstname, a.lastname, a.address, p.payment_method, p.totalbill, ci.itemName, ci.quantity, o.note  -- Include the note field
+    INTO invoiceNum, addDate, firstname, lastname, address, payment_method, totalbill, itemName, quantity, note
+    FROM orders o
+    JOIN accounts a ON o.account_id = a.account_id
+    JOIN payment p ON o.payment_id = p.payment_id
+    JOIN cartitems ci ON o.cart_id = ci.cart_id
+    WHERE o.cart_id = cartId;
+
+    IF invoiceNum IS NOT NULL THEN
+        SELECT JSON_OBJECT(
+            'invoiceNum', invoiceNum,
+            'addDate', addDate,
+            'firstname', firstname,
+            'lastname', lastname,
+            'address', address,
+            'payment_method', payment_method,
+            'totalbill', totalbill,
+            'items', JSON_ARRAY(
+                JSON_OBJECT(
+                    'itemName', itemName,
+                    'quantity', quantity
+                )
+            ),
+            'note', note  -- Include the note field in the JSON response
+        ) AS orderDetails;
+    ELSE
+        SELECT JSON_OBJECT('error', 'Invalid cart ID') AS orderDetails;
+    END IF;
+END
+
